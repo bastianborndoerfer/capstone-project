@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 export default function List({ coins }) {
   return (
     <div>
-      <ul>
+      <StyledList>
         {coins.map((coin) => (
           <StyledListItems key={coin.id}>
             <ListItem
@@ -14,10 +14,14 @@ export default function List({ coins }) {
             />
           </StyledListItems>
         ))}
-      </ul>
+      </StyledList>
     </div>
   );
 }
+
+const StyledList = styled.ul`
+padding: 0;
+`;
 
 const StyledListItems = styled.li`
 list-style: none;
