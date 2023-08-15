@@ -3,24 +3,25 @@ import { styled } from "styled-components";
 
 export default function ListItem({ image, name, symbol, price }) {
   return (
-    //<StyledMain>
+    <StyledMain>
       <Wrapper>
         <StyledImage src={image} alt={name} height={25} width={25} />
         <p>{symbol}</p>
         <p>{price} $</p>
       </Wrapper>
-    //</StyledMain>
+    </StyledMain>
   );
 }
 
-// const StyledMain = styled.main`
-// text-align: center;
-// `;
+const StyledMain = styled.main`
+  text-align: center;
+`;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  text-align: center;
+  justify-content: space-evenly;
+  //text-align: center;
   margin: 8px;
   padding: auto;
   border: black solid 2px;
@@ -30,5 +31,5 @@ const Wrapper = styled.div`
 
 const StyledImage = styled(Image)`
   align-self: center;
-  margin: 0 32px 0 32px;
+  //  margin: 0 32px 0 32px;
 `;

@@ -3,6 +3,9 @@ import Headline from "@/components/Headline";
 import List from "@/components/List";
 import { Component } from "react";
 
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&locale=en";
 
 export default function HomePage() {

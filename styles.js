@@ -8,9 +8,9 @@ export default createGlobalStyle`
   }
 
   body {
-    margin: 0;
+    margin: 0 auto;
     font-family: system-ui;
-    width: 360px;
+    width: 600px;
     box-shadow: 1px 1px 10px grey;
     padding-bottom: 1rem;
     text-align: center;
