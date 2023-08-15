@@ -1,19 +1,19 @@
 import Image from "next/image";
 import { styled } from "styled-components";
 
-export default function ListItem({ image, name, symbol, price }) {
+export default function Coin({ image, name, symbol, price }) {
   return (
-    <StyledMain>
+    <StyledArticle>
       <Wrapper>
         <StyledImage src={image} alt={name} height={25} width={25} />
         <p>{symbol}</p>
         <p>{price} $</p>
       </Wrapper>
-    </StyledMain>
+    </StyledArticle>
   );
 }
 
-const StyledMain = styled.main`
+const StyledArticle = styled.article`
   text-align: center;
 `;
 
