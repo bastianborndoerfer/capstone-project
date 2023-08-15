@@ -1,11 +1,34 @@
 import Image from "next/image";
+import { styled } from "styled-components";
 
 export default function ListItem({ image, name, symbol, price }) {
   return (
-    <container>
-      <Image src={image} alt={name} height={25} width={25} />
-      <p>{symbol}</p>
-      <p>{price} $</p>
-    </container>
+    //<StyledMain>
+      <Wrapper>
+        <StyledImage src={image} alt={name} height={25} width={25} />
+        <p>{symbol}</p>
+        <p>{price} $</p>
+      </Wrapper>
+    //</StyledMain>
   );
 }
+
+// const StyledMain = styled.main`
+// text-align: center;
+// `;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 8px;
+  padding: auto;
+  border: black solid 2px;
+  border-radius: 15px;
+  text-transform: uppercase;
+`;
+
+const StyledImage = styled(Image)`
+  align-self: center;
+  margin: 0 32px 0 32px;
+`;

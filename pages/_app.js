@@ -16,8 +16,8 @@ async function fetcher(URL) {
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
       <SWRConfig value={{ fetcher }}>
+      <GlobalStyle />
         <Component {...pageProps} />
       </SWRConfig>
     </>
