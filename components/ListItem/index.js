@@ -19,11 +19,8 @@ const StyledMain = styled.main`
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
-  //text-align: center;
   margin: 8px;
-  padding: auto;
   border: black solid 2px;
   border-radius: 15px;
   text-transform: uppercase;
@@ -31,5 +28,4 @@ const Wrapper = styled.div`
 
 const StyledImage = styled(Image)`
   align-self: center;
-  //  margin: 0 32px 0 32px;
 `;
