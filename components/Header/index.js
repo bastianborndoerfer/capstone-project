@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function Headline() {
+export default function Header() {
   return (
-    <div>
+    <header>
       <Image
         src="/placeholder.png"
         height={100}
@@ -10,6 +10,6 @@ export default function Headline() {
         alt="A Logo Placeholder"
       />
       <h1>KryptoScout</h1>
-    </div>
+    </header>
   );
 }
