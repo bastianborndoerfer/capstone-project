@@ -1,24 +1,37 @@
 import { useRouter } from "next/router";
-import { styled } from "styled-components";
+import { useState, useEffect } from "react";
+import CoinDetails from "@/components/CoinDetails";
 
 export default function ShowCoinDetails({ coins }) {
+  const [selectedCoin, setSelectedCoin] = useState(null);
   const router = useRouter();
   const { id } = router.query;
-  const clickedCoin = coins.find((coin) => coin.id === id);
 
-  if (!clickedCoin) {
-    return <h1>Error: 404 - Coin not found</h1>;
+  useEffect(() => {
+    setSelectedCoin(coins.find((coin) => coin.id === id));
+  }, [setSelectedCoin, coins, id]);
+
+  useEffect(() => {
+    let timeoutId;
+    if (!selectedCoin) {
+      timeoutId = setTimeout(() => router.push("/404"), 3000);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [selectedCoin, router]);
+
+  if (!selectedCoin) {
+    return null;
   }
 
   return (
-    <ClickedCoinDetails
-      mkrank={clickedCoin.market_cap_rank}
-      mk={clickedCoin.market_cap}
-      dailyhigh={clickedCoin.high_24h}
-      dailylow={clickedCoin.low_24h}
-      ath={clickedCoin.ath}
-      athchange={clickedCoin.ath_change_percentage}
-
+    <CoinDetails
+      mcrank={selectedCoin.market_cap_rank}
+      mc={selectedCoin.market_cap}
+      dailyhigh={selectedCoin.high_24h}
+      dailylow={selectedCoin.low_24h}
+      ath={selectedCoin.ath}
+      athchange={selectedCoin.ath_change_percentage}
     />
   );
 }
