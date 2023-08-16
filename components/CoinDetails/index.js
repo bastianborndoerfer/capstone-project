@@ -1,4 +1,4 @@
-import CoinHeader from "../CoinHeader";
+
 
 export default function CoinDetails({
   mcrank,
@@ -10,14 +10,13 @@ export default function CoinDetails({
 }) {
   return (
     <div>
-    <CoinHeader  />
     <ul>
-      <li>{mcrank}</li>
-      <li>{mc}</li>
-      <li>{dailyhigh}</li>
-      <li>{dailylow}</li>
-      <li>{ath}</li>
-      <li>{athchange}</li>
+      <li>Market Cap Rank: {mcrank}</li>
+      <li>Market Cap: {mc}</li>
+      <li>24H High: {dailyhigh}</li>
+      <li>24H Low: {dailylow}</li>
+      <li>All Time High: {ath}</li>
+      <li>All Time High Change: {athchange}</li>
     </ul>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import CoinDetails from "@/components/CoinDetails";
+import CoinHeader from "@/components/CoinHeader";
 
 export default function ShowCoinDetails({ coins }) {
   const [selectedCoin, setSelectedCoin] = useState(null);
@@ -25,13 +26,21 @@ export default function ShowCoinDetails({ coins }) {
   }
 
   return (
-    <CoinDetails
-      mcrank={selectedCoin.market_cap_rank}
-      mc={selectedCoin.market_cap}
-      dailyhigh={selectedCoin.high_24h}
-      dailylow={selectedCoin.low_24h}
-      ath={selectedCoin.ath}
-      athchange={selectedCoin.ath_change_percentage}
-    />
+    <>
+      <CoinHeader
+        image={selectedCoin.image}
+        name={selectedCoin.name}
+        symbol={selectedCoin.symbol}
+        price={selectedCoin.current_price}
+      />
+      <CoinDetails
+        mcrank={selectedCoin.market_cap_rank}
+        mc={selectedCoin.market_cap}
+        dailyhigh={selectedCoin.high_24h}
+        dailylow={selectedCoin.low_24h}
+        ath={selectedCoin.ath}
+        athchange={selectedCoin.ath_change_percentage}
+      />
+    </>
   );
 }
