@@ -1,4 +1,4 @@
-
+import { styled } from "styled-components";
 
 export default function CoinDetails({
   mcrank,
@@ -9,15 +9,34 @@ export default function CoinDetails({
   athchange,
 }) {
   return (
-    <div>
-    <ul>
-      <li>Market Cap Rank: {mcrank}</li>
-      <li>Market Cap: {mc}</li>
-      <li>24H High: {dailyhigh}</li>
-      <li>24H Low: {dailylow}</li>
-      <li>All Time High: {ath}</li>
-      <li>All Time High Change: {athchange}</li>
-    </ul>
-    </div>
+    <Wrapper>
+      <StyledList>
+        <StyledListItem>Market Cap Rank: {mcrank}</StyledListItem>
+        <StyledListItem>Market Cap:{mc}</StyledListItem>
+        <StyledListItem>24H High: {dailyhigh}</StyledListItem>
+        <StyledListItem>24H Low: {dailylow}</StyledListItem>
+        <StyledListItem>All Time High: {ath}</StyledListItem>
+        <StyledListItem>All Time High Change: {athchange}</StyledListItem>
+      </StyledList>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+display: inline-block;
+border: solid;
+border-radius: 15px;
+text-align: justify;
+`
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const StyledListItem = styled.li`
+  border-bottom: solid;
+`;

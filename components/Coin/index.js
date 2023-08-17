@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { styled } from "styled-components";
+import Link from "next/link.js";
 
 export default function Coin({ image, name, symbol, price, id }) {
   return (

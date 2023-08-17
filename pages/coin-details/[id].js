@@ -31,8 +31,8 @@ export default function ShowCoinDetails({ coins }) {
         image={selectedCoin.image}
         name={selectedCoin.name}
         symbol={selectedCoin.symbol}
-        price={selectedCoin.current_price}
       />
+      <p>$ {selectedCoin.current_price} {selectedCoin.price_change_percentage_24h}</p>
       <CoinDetails
         mcrank={selectedCoin.market_cap_rank}
         mc={selectedCoin.market_cap}
