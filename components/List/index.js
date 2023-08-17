@@ -11,6 +11,7 @@ export default function List({ coins }) {
             symbol={coin.symbol}
             price={coin.current_price}
             id={coin.id}
+            name={coin.name}
           />
         </li>
       ))}

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function CoinDetails({
   mcrank,
@@ -23,11 +23,11 @@ export default function CoinDetails({
 }
 
 const Wrapper = styled.div`
-display: inline-block;
-border: solid;
-border-radius: 15px;
-text-align: justify;
-`
+  display: inline-block;
+  border: solid;
+  border-radius: 15px;
+  text-align: justify;
+`;
 
 const StyledList = styled.ul`
   list-style: none;

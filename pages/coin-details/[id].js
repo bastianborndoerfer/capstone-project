@@ -4,25 +4,17 @@ import CoinDetails from "@/components/CoinDetails";
 import CoinHeader from "@/components/CoinHeader";
 
 export default function ShowCoinDetails({ coins }) {
-  const [selectedCoin, setSelectedCoin] = useState(null);
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    setSelectedCoin(coins.find((coin) => coin.id === id));
-  }, [setSelectedCoin, coins, id]);
+  if (!id) {
+    return null;
+  }
 
-  useEffect(() => {
-    let timeoutId;
-    if (!selectedCoin) {
-      timeoutId = setTimeout(() => router.push("/404"), 3000);
-    }
-
-    return () => clearTimeout(timeoutId);
-  }, [selectedCoin, router]);
+  const selectedCoin = coins.find((coin) => coin.id === id);
 
   if (!selectedCoin) {
-    return null;
+    router.push("/404");
   }
 
   return (
@@ -32,7 +24,10 @@ export default function ShowCoinDetails({ coins }) {
         name={selectedCoin.name}
         symbol={selectedCoin.symbol}
       />
-      <p>$ {selectedCoin.current_price} {selectedCoin.price_change_percentage_24h}</p>
+      <p>
+        $ {selectedCoin.current_price}{" "}
+        {selectedCoin.price_change_percentage_24h}
+      </p>
       <CoinDetails
         mcrank={selectedCoin.market_cap_rank}
         mc={selectedCoin.market_cap}
