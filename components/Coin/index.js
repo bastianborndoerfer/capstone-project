@@ -1,15 +1,18 @@
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "styled-components";
+import Link from "next/link.js";
 
-export default function Coin({ image, name, symbol, price }) {
+export default function Coin({ image, name, symbol, price, id }) {
   return (
-    <StyledArticle>
-      <Wrapper>
-        <StyledImage src={image} alt={name} height={25} width={25} />
-        <p>{symbol}</p>
-        <p>{price} $</p>
-      </Wrapper>
-    </StyledArticle>
+    <Link href={`/coin-details/${id}`}>
+      <StyledArticle>
+        <Wrapper>
+          <StyledImage src={image} alt={name} height={25} width={25} />
+          <p>{symbol}</p>
+          <p>{price} $</p>
+        </Wrapper>
+      </StyledArticle>
+    </Link>
   );
 }
 
