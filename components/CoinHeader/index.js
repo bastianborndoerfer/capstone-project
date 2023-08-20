@@ -22,4 +22,5 @@ const StyledHeader = styled.header`
   text-transform: uppercase;
   font-weight: bolder;
   font-size: larger;
+  position: relative;
 `;
