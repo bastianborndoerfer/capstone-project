@@ -13,10 +13,10 @@ export default function LikeButton() {
     <div>
       <Button type="button" onClick={toggleLiked}>
         {liked ? (
-          <Image src={"/favoriteButton.svg"} alt="" width={30} height={30} />
+          <Image src={"/favoriteButton_aktiv.svg"} alt="" width={30} height={30} />
         ) : (
           <Image
-            src={"/favoriteButton_aktiv.svg"}
+            src={"/favoriteButton.svg"}
             alt=""
             width={30}
             height={30}
@@ -34,4 +34,7 @@ const Button = styled.button`
   }
   border: none;
   position: absolute;
+  right: .5rem;
+  top: .5rem;
+  z-index: 1;
 `;
