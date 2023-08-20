@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import LikeButton from "../LikeButton";
 
 export default function CoinHeader({ image, symbol, name }) {
   return (
@@ -9,6 +10,7 @@ export default function CoinHeader({ image, symbol, name }) {
       <Image src={image} alt={name} height={80} width={80} />
       <p>{name}</p>
       <p>({symbol})</p>
+      <LikeButton />
     </StyledHeader>
   );
 }
