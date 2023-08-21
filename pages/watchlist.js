@@ -9,8 +9,6 @@ export default function Watchlist() {
       <h2>My Watchlist</h2>
     </section>
     <NavBar />
-    
-    
     </>
   );
 }

@@ -1,28 +1,37 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const router = useRouter();
   return (
     <StyledFooter>
       <StyledUl>
         <StyledLi>
           <Link href={"/"}>
-            <Image src="/market.svg" height={30} width={30} alt="" />
+            <Image
+              src="/market.svg"
+              height={40}
+              width={40}
+              alt=""
+              className={router.pathname === "/" ? "active" : ""}
+            />
           </Link>
         </StyledLi>
         <StyledLi>
-        <Link href={"./watchlist"}>
-          <Image
-            src="/favoriteButton_aktiv.svg"
-            height={30}
-            width={30}
-            alt=""
-          />
+          <Link href={"./watchlist"}>
+            <Image
+              src="/favoriteButton_aktiv.svg"
+              height={40}
+              width={40}
+              alt=""
+              className={router.pathname === "/watchlist" ? "active" : ""}
+            />
           </Link>
         </StyledLi>
         <StyledLi>
-          <Image src="/portfolio.svg" height={30} width={30} alt="" />
+          <Image src="/portfolio.svg" height={40} width={40} alt="" />
         </StyledLi>
       </StyledUl>
     </StyledFooter>
@@ -44,10 +53,13 @@ const StyledUl = styled.ul`
   border-radius: 15px 15px 0 0;
   box-shadow: 1px 1px 10px grey;
   background-color: lightgrey;
-  `;
-const StyledLi = styled.li`
-&:hover {
-    background-color: grey;
-}
+`;
 
+const StyledLi = styled.li`
+  &:hover {
+    transform: scale(1.2);
+  }
+  .active {
+    background-color: antiquewhite;
+  }
 `;
