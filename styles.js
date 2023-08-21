@@ -12,7 +12,6 @@ export default createGlobalStyle`
     font-family: system-ui;
     width: 667px;
     box-shadow: 1px 1px 10px grey;
-    padding-bottom: 1rem;
     text-align: center;
   }
 `;
