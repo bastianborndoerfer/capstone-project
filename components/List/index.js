@@ -1,5 +1,6 @@
 import Coin from "../Coin";
 import { styled } from "styled-components";
+import LikeButton from "../LikeButton";
 
 export default function List({ coins }) {
   return (
@@ -22,4 +23,5 @@ export default function List({ coins }) {
 const StyledList = styled.ul`
   padding: 0;
   list-style: none;
+
 `;
