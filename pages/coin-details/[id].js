@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import CoinDetails from "@/components/CoinDetails";
 import CoinHeader from "@/components/CoinHeader";
 
-export default function ShowCoinDetails({ coins }) {
+export default function ShowCoinDetails({ coins, coinsInfo, onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -11,7 +11,7 @@ export default function ShowCoinDetails({ coins }) {
     return null;
   }
 
-  const selectedCoin = coins.find((coin) => coin.id === id);
+  const selectedCoin = coinsInfo.find((coin) => coin.id === id);
 
   if (!selectedCoin) {
     router.push("/404");
@@ -23,6 +23,10 @@ export default function ShowCoinDetails({ coins }) {
         image={selectedCoin.image}
         name={selectedCoin.name}
         symbol={selectedCoin.symbol}
+        isFavorite={
+          coinsInfo?.find((coinInfo) => coinInfo.id === selectedCoin.id)?.isFavorite
+        }
+        onToggleFavorite={() => onToggleFavorite(selectedCoinCoin.id)}
       />
       <p>
         $ {selectedCoin.current_price}{" "}

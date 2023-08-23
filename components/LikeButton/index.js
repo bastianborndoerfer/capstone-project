@@ -1,18 +1,13 @@
 import Image from "next/image";
-import { useState } from "react";
 import styled from "styled-components";
 
-export default function LikeButton() {
-  const [liked, setLiked] = useState(false);
+export default function LikeButton( isFavorite, onToggleFavorite, id) {
 
-  function toggleLiked() {
-    setLiked(!liked);
-  }
 
   return (
     <div>
-      <Button type="button" onClick={toggleLiked}>
-        {liked ? (
+      <Button type="button" onClick={onToggleFavorite(id)} isFavorite={isFavorite}>
+        {isFavorite ? (
           <Image src={"/favoriteButton_aktiv.svg"} alt="" width={30} height={30} />
         ) : (
           <Image

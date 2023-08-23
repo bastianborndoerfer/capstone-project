@@ -3,14 +3,14 @@ import Link from "next/link";
 import styled from "styled-components";
 import LikeButton from "../LikeButton";
 
-export default function CoinHeader({ image, symbol, name }) {
+export default function CoinHeader({ image, symbol, name, isFavorite, onToggleFavorite }) {
   return (
     <StyledHeader>
       <Link href={"/"}>←</Link>
       <Image src={image} alt={name} height={80} width={80} />
       <p>{name}</p>
       <p>({symbol})</p>
-      <LikeButton />
+      <LikeButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite}/>
     </StyledHeader>
   );
 }

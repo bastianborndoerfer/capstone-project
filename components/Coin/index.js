@@ -9,8 +9,8 @@ export default function Coin({
   symbol,
   price,
   id,
-  toggleLiked,
-  liked,
+  onToggleFavorite,
+  isFavorite,
 }) {
   return (
     <StyledArticle>
@@ -20,7 +20,7 @@ export default function Coin({
           <p>{symbol}</p>
           <p>{price} $</p>
         </StyledLink>
-        <LikeButton onClick={toggleLiked} liked={liked} />
+        <LikeButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} />
       </Wrapper>
     </StyledArticle>
   );
