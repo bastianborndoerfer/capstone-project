@@ -44,10 +44,11 @@ export default function NavBar() {
 }
 
 const StyledFooter = styled.footer`
-  position: sticky;
+  position: fixed;
+  width: 667px;
   bottom: 0;
   z-index: 10;
-`;
+  `;
 
 const StyledUl = styled.ul`
   padding: 8px;
