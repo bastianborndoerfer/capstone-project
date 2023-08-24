@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useRouter } from "next/router";
 
 export default function NavBar() {
@@ -10,28 +10,33 @@ export default function NavBar() {
       <StyledUl>
         <StyledLi>
           <Link href={"/"}>
-            <Image
+            <StyledImage
               src="/market.svg"
               height={40}
               width={40}
               alt="chart icon"
-              className={router.pathname === "/" ? "active" : ""}
+              isActive={router.pathname === "/"}
             />
           </Link>
         </StyledLi>
         <StyledLi>
           <Link href={"./watchlist"}>
-            <Image
+            <StyledImage
               src="/favoriteButton_aktiv.svg"
               height={40}
               width={40}
               alt="a star icon"
-              className={router.pathname === "/watchlist" ? "active" : ""}
+              isActive={router.pathname === "/watchlist"}
             />
           </Link>
         </StyledLi>
         <StyledLi>
-          <Image src="/portfolio.svg" height={40} width={40} alt="portfolio icon" />
+          <Image
+            src="/portfolio.svg"
+            height={40}
+            width={40}
+            alt="portfolio icon"
+          />
         </StyledLi>
       </StyledUl>
     </StyledFooter>
@@ -59,7 +64,12 @@ const StyledLi = styled.li`
   &:hover {
     transform: scale(1.2);
   }
-  .active {
-    background-color: antiquewhite;
-  }
+`;
+
+const StyledImage = styled(Image)`
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      background-color: antiquewhite;
+    `}
 `;

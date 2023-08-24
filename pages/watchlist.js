@@ -8,10 +8,11 @@ export default function Watchlist({
   coinsData,
   onToggleFavorite,
 }) {
+  const favoriteCoinsInfo = coinsDataInfo.filter(
+    (coinInfo) => coinInfo.isFavorite
+  );
   const likedCoins = coinsData.filter((coin) =>
-    coinsDataInfo.find(
-      (coinData) => coinData.id === coin.id && coinData.isFavorite
-    )
+    favoriteCoinsInfo.map((coinInfo) => coinInfo.id).includes(coin.id)
   );
   return (
     <>
