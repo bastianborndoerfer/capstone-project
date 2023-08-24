@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import NavBar from "@/components/NavigationBar";
 import Coin from "@/components/Coin";
+import styled from "styled-components";
 
 export default function Watchlist({
   coinsDataInfo,
@@ -18,7 +19,7 @@ export default function Watchlist({
         <Header />
         <h2>My Watchlist</h2>
       </section>
-      <ul>
+      <StyledList>
         {likedCoins?.map((coin) => (
           <li key={coin.id}>
             <Coin
@@ -35,8 +36,13 @@ export default function Watchlist({
             />
           </li>
         ))}
-      </ul>
+      </StyledList>
       <NavBar />
     </>
   );
 }
+
+const StyledList = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
