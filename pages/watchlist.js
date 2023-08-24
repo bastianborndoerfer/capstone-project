@@ -3,14 +3,8 @@ import NavBar from "@/components/NavigationBar";
 import Coin from "@/components/Coin";
 import styled from "styled-components";
 
-export default function Watchlist({
-  coinsDataInfo,
-  coinsData,
-  onToggleFavorite,
-}) {
-  const favoriteCoinsInfo = coinsDataInfo.filter(
-    (coinInfo) => coinInfo.isFavorite
-  );
+export default function Watchlist({ coinsData, onToggleFavorite }) {
+  const favoriteCoinsInfo = coinsData.filter((coinInfo) => coinInfo.isFavorite);
   const likedCoins = coinsData.filter((coin) =>
     favoriteCoinsInfo.map((coinInfo) => coinInfo.id).includes(coin.id)
   );
@@ -31,7 +25,7 @@ export default function Watchlist({
               name={coin.name}
               onToggleFavorite={() => onToggleFavorite(coin.id)}
               isFavorite={
-                coinsDataInfo?.find((coinInfo) => coinInfo.id === coin.id)
+                coinsData?.find((coinInfo) => coinInfo.id === coin.id)
                   ?.isFavorite
               }
             />

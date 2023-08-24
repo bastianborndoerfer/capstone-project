@@ -1,7 +1,7 @@
 import Coin from "../Coin";
 import  styled  from "styled-components";
 
-export default function List({ coinsData, coinsDataInfo, onToggleFavorite }) {
+export default function List({ coinsData, onToggleFavorite }) {
   return (
     <StyledList>
       {coinsData?.map((coin) => (
@@ -14,7 +14,7 @@ export default function List({ coinsData, coinsDataInfo, onToggleFavorite }) {
             name={coin.name}
             onToggleFavorite={() => onToggleFavorite(coin.id)}
             isFavorite={
-              coinsDataInfo?.find((coinInfo) => coinInfo.id === coin.id)
+              coinsData?.find((coinInfo) => coinInfo.id === coin.id)
                 ?.isFavorite
             }
           />

@@ -4,7 +4,6 @@ import CoinHeader from "@/components/CoinHeader";
 
 export default function ShowCoinDetails({
   coinsData,
-  coinsDataInfo,
   onToggleFavorite,
 }) {
   const router = useRouter();
@@ -15,9 +14,6 @@ export default function ShowCoinDetails({
   }
 
   const selectedCoin = coinsData.find((coin) => coin.id === id);
-  const selectedCoinInfo = coinsDataInfo.find(
-    (coinInfo) => coinInfo.id === selectedCoin.id
-  );
 
   if (!selectedCoin) {
     router.push("/404");
@@ -29,7 +25,7 @@ export default function ShowCoinDetails({
         image={selectedCoin.image}
         name={selectedCoin.name}
         symbol={selectedCoin.symbol}
-        isFavorite={selectedCoinInfo.isFavorite}
+        isFavorite={selectedCoin.isFavorite}
         onToggleFavorite={() => onToggleFavorite(selectedCoin.id)}
       />
       <p>

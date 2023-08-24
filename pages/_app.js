@@ -2,34 +2,34 @@ import { useState } from "react";
 import GlobalStyle from "../styles";
 import data from "../lib/data";
 
-
-
 export default function App({ Component, pageProps }) {
-  const [coinsData, setcoinsData] = useState(data);
-  const [coinsDataInfo, setCoinsDataInfo] = useState([]);
+  const [coinsData, setCoinsData] = useState(data);
 
   function handleToggleFavorite(id) {
-    const coinData = coinsDataInfo.find((coin) => coin.id === id);
-    if (coinData) {
-      setCoinsDataInfo(
-        coinsDataInfo.map((coinInfo) =>
-          coinInfo.id === id
-            ? { id, isFavorite: !coinInfo.isFavorite }
-            : coinInfo
-        )
-      );
-    } else {
-      setCoinsDataInfo([...coinsDataInfo, { id, isFavorite: true }]);
+
+    const selectedCoin = coinsData.find((coin) => coin.id === id);
+
+    if (selectedCoin) {
+      const updatedCoinsData = coinsData.map((coinData) => {
+        if (coinData.id === id) {
+          return {
+            ...coinData,
+            isFavorite: !selectedCoin.isFavorite,
+          };
+        }
+        return coinData;
+      });
+      setCoinsData(updatedCoinsData);
     }
   }
 
+  console.log(coinsData);
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
         coinsData={coinsData}
-        coinsDataInfo={coinsDataInfo}
         onToggleFavorite={handleToggleFavorite}
       />
     </>
