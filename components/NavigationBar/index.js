@@ -14,7 +14,7 @@ export default function NavBar() {
               src="/market.svg"
               height={40}
               width={40}
-              alt=""
+              alt="chart icon"
               className={router.pathname === "/" ? "active" : ""}
             />
           </Link>
@@ -25,13 +25,13 @@ export default function NavBar() {
               src="/favoriteButton_aktiv.svg"
               height={40}
               width={40}
-              alt=""
+              alt="a star icon"
               className={router.pathname === "/watchlist" ? "active" : ""}
             />
           </Link>
         </StyledLi>
         <StyledLi>
-          <Image src="/portfolio.svg" height={40} width={40} alt="" />
+          <Image src="/portfolio.svg" height={40} width={40} alt="portfolio icon" />
         </StyledLi>
       </StyledUl>
     </StyledFooter>

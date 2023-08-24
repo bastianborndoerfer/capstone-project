@@ -15,6 +15,9 @@ export default function ShowCoinDetails({
   }
 
   const selectedCoin = coinsData.find((coin) => coin.id === id);
+  const selectedCoinInfo = coinsDataInfo.find(
+    (coinInfo) => coinInfo.id === selectedCoin.id
+  );
 
   if (!selectedCoin) {
     router.push("/404");
@@ -26,10 +29,7 @@ export default function ShowCoinDetails({
         image={selectedCoin.image}
         name={selectedCoin.name}
         symbol={selectedCoin.symbol}
-        isFavorite={
-          coinsDataInfo?.find((coinInfo) => coinInfo.id === selectedCoin.id)
-            ?.isFavorite
-        }
+        isFavorite={selectedCoinInfo.isFavorite}
         onToggleFavorite={() => onToggleFavorite(selectedCoin.id)}
       />
       <p>
