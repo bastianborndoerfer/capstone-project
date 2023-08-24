@@ -1,9 +1,12 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import CoinDetails from "@/components/CoinDetails";
 import CoinHeader from "@/components/CoinHeader";
 
-export default function ShowCoinDetails({ coins, coinsInfo, onToggleFavorite }) {
+export default function ShowCoinDetails({
+  coinsData,
+  coinsDataInfo,
+  onToggleFavorite,
+}) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -11,7 +14,7 @@ export default function ShowCoinDetails({ coins, coinsInfo, onToggleFavorite }) 
     return null;
   }
 
-  const selectedCoin = coinsInfo.find((coin) => coin.id === id);
+  const selectedCoin = coinsData.find((coin) => coin.id === id);
 
   if (!selectedCoin) {
     router.push("/404");
@@ -24,9 +27,10 @@ export default function ShowCoinDetails({ coins, coinsInfo, onToggleFavorite }) 
         name={selectedCoin.name}
         symbol={selectedCoin.symbol}
         isFavorite={
-          coinsInfo?.find((coinInfo) => coinInfo.id === selectedCoin.id)?.isFavorite
+          coinsDataInfo?.find((coinInfo) => coinInfo.id === selectedCoin.id)
+            ?.isFavorite
         }
-        onToggleFavorite={() => onToggleFavorite(selectedCoinCoin.id)}
+        onToggleFavorite={() => onToggleFavorite(selectedCoin.id)}
       />
       <p>
         $ {selectedCoin.current_price}{" "}

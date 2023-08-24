@@ -1,21 +1,19 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function LikeButton( isFavorite, onToggleFavorite, id) {
-
-
+export default function LikeButton({ isFavorite, onToggleFavorite }) {
   return (
     <div>
-      <Button type="button" onClick={onToggleFavorite(id)} isFavorite={isFavorite}>
+      <Button type="button" onClick={onToggleFavorite} isFavorite={isFavorite}>
         {isFavorite ? (
-          <Image src={"/favoriteButton_aktiv.svg"} alt="" width={30} height={30} />
-        ) : (
           <Image
-            src={"/favoriteButton.svg"}
+            src={"/favoriteButton_aktiv.svg"}
             alt=""
             width={30}
             height={30}
           />
+        ) : (
+          <Image src={"/favoriteButton.svg"} alt="" width={30} height={30} />
         )}
       </Button>
     </div>
@@ -29,7 +27,7 @@ const Button = styled.button`
   }
   border: none;
   position: absolute;
-  right: .5rem;
-  top: .5rem;
+  right: 0.5rem;
+  top: 0.5rem;
   z-index: 1;
 `;
