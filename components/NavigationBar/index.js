@@ -31,12 +31,15 @@ export default function NavBar() {
           </Link>
         </StyledLi>
         <StyledLi>
-          <Image
-            src="/portfolio.svg"
-            height={40}
-            width={40}
-            alt="portfolio icon"
-          />
+          <Link href={"./portfolio"}>
+            <StyledImage
+              src="/portfolio.svg"
+              height={40}
+              width={40}
+              alt="portfolio icon"
+              isActive={router.pathname === "/portfolio"}
+            />
+          </Link>
         </StyledLi>
       </StyledUl>
     </StyledFooter>
@@ -48,7 +51,7 @@ const StyledFooter = styled.footer`
   width: 667px;
   bottom: 0;
   z-index: 10;
-  `;
+`;
 
 const StyledUl = styled.ul`
   padding: 8px;
