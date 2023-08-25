@@ -17,7 +17,7 @@ export default function HomePage({ coinsData, onToggleFavorite }) {
   );
   return (
     <div>
-      <Header onSearch={handleSearch} />
+      <Header handleSearch={handleSearch} />
       <List coinsData={searchedCoinsData} onToggleFavorite={onToggleFavorite} />
       <NavBar />
     </div>

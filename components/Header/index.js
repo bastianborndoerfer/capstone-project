@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function Header({ onSearch }) {
+export default function Header({ handleSearch }) {
   return (
     <StyledHeader>
       <Image
@@ -14,7 +14,7 @@ export default function Header({ onSearch }) {
       <StyledInput
         type="text"
         placeholder="Search for a coin ..."
-        onChange={onSearch}
+        onChange={handleSearch}
       />
     </StyledHeader>
   );
