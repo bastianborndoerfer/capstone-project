@@ -1,11 +1,10 @@
 import Coin from "../Coin";
-import { styled } from "styled-components";
-import LikeButton from "../LikeButton";
+import  styled  from "styled-components";
 
-export default function List({ coins }) {
+export default function List({ coinsData, onToggleFavorite }) {
   return (
     <StyledList>
-      {coins?.map((coin) => (
+      {coinsData?.map((coin) => (
         <li key={coin.id}>
           <Coin
             image={coin.image}
@@ -13,6 +12,11 @@ export default function List({ coins }) {
             price={coin.current_price}
             id={coin.id}
             name={coin.name}
+            onToggleFavorite={() => onToggleFavorite(coin.id)}
+            isFavorite={
+              coinsData?.find((coinInfo) => coinInfo.id === coin.id)
+                ?.isFavorite
+            }
           />
         </li>
       ))}
@@ -23,5 +27,4 @@ export default function List({ coins }) {
 const StyledList = styled.ul`
   padding: 0;
   list-style: none;
-
 `;
