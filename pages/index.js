@@ -1,20 +1,24 @@
 import Header from "@/components/Header";
 import List from "@/components/List";
 import NavBar from "@/components/NavigationBar";
+import { useState } from "react";
 
-export default function HomePage({
-  coinsData,
-  coinsDataInfo,
-  onToggleFavorite,
-}) {
+export default function HomePage({ coinsData, onToggleFavorite }) {
+  const [search, setSearch] = useState("");
+
+  function handleSearch(event) {
+    setSearch(event.target.value);
+  }
+
+  const searchedCoinsData = coinsData.filter(
+    (coin) =>
+      coin.id.toLowerCase().includes(search.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div>
-      <Header />
-      <List
-        coinsDataInfo={coinsDataInfo}
-        coinsData={coinsData}
-        onToggleFavorite={onToggleFavorite}
-      />
+      <Header handleSearch={handleSearch} />
+      <List coinsData={searchedCoinsData} onToggleFavorite={onToggleFavorite} />
       <NavBar />
     </div>
   );
