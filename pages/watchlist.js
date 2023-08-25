@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import NavBar from "@/components/NavigationBar";
 import Coin from "@/components/Coin";
 import styled from "styled-components";
@@ -40,5 +39,6 @@ export default function Watchlist({ coinsData, onToggleFavorite }) {
 
 const StyledList = styled.ul`
   padding: 0;
+  padding-bottom: 48px;
   list-style: none;
 `;
