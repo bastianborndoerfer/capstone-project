@@ -6,59 +6,59 @@ import { useRouter } from "next/router";
 export default function NavBar() {
   const router = useRouter();
   return (
-    <StyledFooter>
-      <StyledUl>
-        <StyledLi>
-          <Link href={"/"}>
-            <StyledImage
-              src="/market.svg"
-              height={40}
-              width={40}
-              alt="chart icon"
-              isActive={router.pathname === "/"}
-            />
-          </Link>
-        </StyledLi>
-        <StyledLi>
-          <Link href={"./watchlist"}>
-            <StyledImage
-              src="/favoriteButton_aktiv.svg"
-              height={40}
-              width={40}
-              alt="a star icon"
-              isActive={router.pathname === "/watchlist"}
-            />
-          </Link>
-        </StyledLi>
-        <StyledLi>
-          <Image
+    <StyledUl>
+      <StyledLi>
+        <Link href={"/"}>
+          <StyledImage
+            src="/market.svg"
+            height={40}
+            width={40}
+            alt="chart icon"
+            isActive={router.pathname === "/"}
+          />
+        </Link>
+      </StyledLi>
+      <StyledLi>
+        <Link href={"./watchlist"}>
+          <StyledImage
+            src="/favoriteButton_aktiv.svg"
+            height={40}
+            width={40}
+            alt="a star icon"
+            isActive={router.pathname === "/watchlist"}
+          />
+        </Link>
+      </StyledLi>
+      <StyledLi>
+        <Link href={"./portfolio"}>
+          <StyledImage
             src="/portfolio.svg"
             height={40}
             width={40}
             alt="portfolio icon"
+            isActive={router.pathname === "/portfolio"}
           />
-        </StyledLi>
-      </StyledUl>
-    </StyledFooter>
+        </Link>
+      </StyledLi>
+    </StyledUl>
   );
 }
 
-const StyledFooter = styled.footer`
+const StyledUl = styled.ul`
   position: fixed;
   width: 667px;
   bottom: 0;
-  z-index: 10;
-  `;
-
-const StyledUl = styled.ul`
+  z-index: 1;
+  height: 64px;
+  margin: 0;
   padding: 8px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   list-style: none;
   border: solid;
   border-radius: 15px 15px 0 0;
   box-shadow: 1px 1px 10px grey;
-  background-color: lightgrey;
+  background-color: white;  
 `;
 
 const StyledLi = styled.li`
