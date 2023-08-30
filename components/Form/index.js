@@ -91,9 +91,9 @@ console.log(position)
           />
         </label>
 
-        <label>
+        <label htmlFor="date">
           Date:
-          <input type="date" name="date" />
+          <input type="date" name="date" id="date"/>
         </label>
         <button type="cancel">Cancel</button>
 

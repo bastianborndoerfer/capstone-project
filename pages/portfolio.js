@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+
 import HeaderPages from "@/components/HeaderPages";
 import Holdings from "@/components/Holdings";
 import NavBar from "@/components/NavigationBar";

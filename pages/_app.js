@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
   function handleAddPosition(newPosition){
     setPositions([...positions, newPosition])
   }
-  console.log(coinsData);
+ 
   return (
     <>
       <GlobalStyle />

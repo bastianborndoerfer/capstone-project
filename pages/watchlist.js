@@ -5,7 +5,7 @@ import HeaderPages from "@/components/HeaderPages";
 import Form from "@/components/Form";
 import { useState } from "react";
 
-export default function Watchlist({ coinsData, onToggleFavorite, positions }) {
+export default function Watchlist({ coinsData, onToggleFavorite, positions, onAddPosition }) {
   const [expandedItems, setExpandedItems] = useState({});
 
   const favoriteCoinsInfo = coinsData.filter((coinInfo) => coinInfo.isFavorite);
@@ -43,7 +43,7 @@ export default function Watchlist({ coinsData, onToggleFavorite, positions }) {
               }
             />
             {expandedItems[coin.id] &&
-            <Form positions={positions} />}
+            <Form positions={positions} onAddPosition={onAddPosition}/>}
           </li>
         ))}
       </StyledList>
