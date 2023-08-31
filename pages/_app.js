@@ -31,17 +31,6 @@ export default function App({ Component, pageProps }) {
     setPositions([...positions, newPosition]);
   }
 
-  // update a position
-  function handleUpdatePosition(updatedPosition) {
-    const updatedPositions = positions.map((position) => {
-      if (updatedPosition.id !== position.id) {
-        return position;
-      }
-      return updatedPosition;
-    });
-    setPositions(updatedPositions);
-  }
-
   // delete a position
   function handleDeletePosition(deletePosition){
     const remainingPositions = positions.filter((position) => position.id !== deletePosition.id);
@@ -57,7 +46,6 @@ export default function App({ Component, pageProps }) {
         onToggleFavorite={handleToggleFavorite}
         positions={positions}
         onAddPosition={handleAddPosition}
-        onUpdatePosition={handleUpdatePosition}
         onDeletePosition={handleDeletePosition}
       />
     </>
