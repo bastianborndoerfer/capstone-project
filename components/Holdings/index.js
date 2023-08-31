@@ -1,6 +1,13 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export default function Holdings({ positions }) {
+export default function Holdings({ positions, onDeletePosition }) {
+  function showButton(position) {
+    const dialogId = `deleteDialog-${position.id}`;
+    const dialog = document.getElementById(dialogId);
+    dialog.showModal();
+  }
+
   return (
     <StyledList>
       {positions.map((position, index) => (
@@ -10,6 +17,18 @@ export default function Holdings({ positions }) {
           <p>Quantity: {position.quantity}</p>
           <p>Total: {position.total}</p>
           <p>Date: {position.date}</p>
+          <button onClick={() => showButton(position)}>X</button>
+          <dialog id={`deleteDialog-${position.id}`}>
+            <p>Do you really want to delete the position?</p>
+            <form method="dialog">
+              <div>
+                <button>Cancel</button>
+                <button onClick={() => onDeletePosition(position)}>
+                  Confirm
+                </button>
+              </div>
+            </form>
+          </dialog>
         </StyledListItem>
       ))}
     </StyledList>
@@ -17,7 +36,7 @@ export default function Holdings({ positions }) {
 }
 
 const StyledList = styled.ul`
-padding: 0;
+  padding: 0;
 `;
 
 const StyledListItem = styled.li`
