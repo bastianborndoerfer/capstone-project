@@ -16,20 +16,20 @@ export default function Form({ onAddPosition }) {
       ...position,
       [event.target.name]: event.target.value || "",
     });
-  
+
     if (event.target.name === "price" || event.target.name === "quantity") {
       updateTotal(event.target.name, event.target.value);
     }
   }
-  
+
   function updateTotal(name, value) {
-    const updatedTotal = name === "price" ? value * position.quantity : position.price * value;
+    const updatedTotal =
+      name === "price" ? value * position.quantity : position.price * value;
     setPosition((prevState) => ({
       ...prevState,
       total: updatedTotal,
     }));
   }
-
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -49,6 +49,17 @@ export default function Form({ onAddPosition }) {
     onAddPosition(newPosition);
     event.target.reset();
   }
+
+  function handleCancel() {
+    setPosition({
+      id: "",
+      price: "",
+      quantity: "",
+      total: "",
+      date: "",
+    });
+  }
+
   return (
     <Wrapper>
       <h3>Add Transaction:</h3>
@@ -83,15 +94,16 @@ export default function Form({ onAddPosition }) {
             value={position.total}
             onChange={updateTotal}
             readOnly
-            
           />
         </StyledLabel>
 
         <StyledLabel>
           Date:
-          <StyledInput type="date" name="date"/>
+          <StyledInput type="date" name="date" required />
         </StyledLabel>
-        <StyledButton type="cancel">Cancel</StyledButton>
+        <StyledButton type="button" onClick={handleCancel}>
+          Cancel
+        </StyledButton>
 
         <StyledButton type="submit">Submit</StyledButton>
       </StyledForm>
@@ -134,4 +146,3 @@ const StyledInput = styled.input`
 const StyledButton = styled.button`
   margin-top: 10px;
 `;
-
