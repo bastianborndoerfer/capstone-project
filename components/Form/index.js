@@ -49,56 +49,52 @@ export default function Form({ onAddPosition }) {
     onAddPosition(newPosition);
     event.target.reset();
   }
-console.log(position)
   return (
     <Wrapper>
       <h3>Add Transaction:</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="price">
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledLabel>
           Price per coin:
-          <input
+          <StyledInput
             type="number"
             name="price"
-            id="price"
-            defaultValue={position.price}
+            value={position.price}
             onChange={handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label htmlFor="quantity">
+        <StyledLabel>
           Quantity:
-          <input
+          <StyledInput
             type="number"
             name="quantity"
-            id="quantity"
-            defaultValue={position.quantity}
+            value={position.quantity}
             onChange={handleChange}
             required
           />
-        </label>
+        </StyledLabel>
 
-        <label htmlFor="total">
+        <StyledLabel>
           Total output:
-          <input
+          <StyledInput
             type="number"
             name="total"
-            id="total"
             value={position.total}
             onChange={updateTotal}
             readOnly
             
           />
-        </label>
+        </StyledLabel>
 
-        <label htmlFor="date">
+        <StyledLabel>
           Date:
-          <input type="date" name="date" id="date"/>
-        </label>
-        <button type="cancel">Cancel</button>
+          <StyledInput type="date" name="date"/>
+        </StyledLabel>
+        <StyledButton type="cancel">Cancel</StyledButton>
 
-        <button type="submit">Submit</button>
-      </form>
+        <StyledButton type="submit">Submit</StyledButton>
+      </StyledForm>
     </Wrapper>
   );
 }
@@ -114,28 +110,28 @@ const Wrapper = styled.div`
   margin-top: 10px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
   margin: 0 auto;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    label {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-
-    input[type="number"],
-    input[type="date"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-    }
-
-    button {
-      margin-top: 10px;
-    }
-  }
 `;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+`;
+
+const StyledButton = styled.button`
+  margin-top: 10px;
+`;
+
