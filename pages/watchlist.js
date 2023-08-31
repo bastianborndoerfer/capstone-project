@@ -2,12 +2,24 @@ import NavBar from "@/components/NavigationBar";
 import Coin from "@/components/Coin";
 import styled from "styled-components";
 import HeaderPages from "@/components/HeaderPages";
+import Form from "@/components/Form";
+import { useState } from "react";
 
-export default function Watchlist({ coinsData, onToggleFavorite }) {
+export default function Watchlist({ coinsData, onToggleFavorite, positions, onAddPosition }) {
+  const [expandedItems, setExpandedItems] = useState({});
+
   const favoriteCoinsInfo = coinsData.filter((coinInfo) => coinInfo.isFavorite);
   const likedCoins = coinsData.filter((coin) =>
     favoriteCoinsInfo.map((coinInfo) => coinInfo.id).includes(coin.id)
   );
+
+  const toggleItemExpansion = (coinId) => {
+    setExpandedItems((prevState) => ({
+      ...prevState,
+      [coinId]: !prevState[coinId],
+    }));
+  };
+
   return (
     <>
       <section>
@@ -17,6 +29,7 @@ export default function Watchlist({ coinsData, onToggleFavorite }) {
       <StyledList>
         {likedCoins?.map((coin) => (
           <li key={coin.id}>
+            <button type="button" onClick={() => toggleItemExpansion(coin.id)} >+</button>
             <Coin
               image={coin.image}
               symbol={coin.symbol}
@@ -29,6 +42,8 @@ export default function Watchlist({ coinsData, onToggleFavorite }) {
                   ?.isFavorite
               }
             />
+            {expandedItems[coin.id] &&
+            <Form positions={positions} onAddPosition={onAddPosition}/>}
           </li>
         ))}
       </StyledList>

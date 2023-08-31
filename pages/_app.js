@@ -1,9 +1,11 @@
-import { useState } from "react";
+
 import GlobalStyle from "../styles";
 import data from "../lib/data";
+import useLocalStorageState from 'use-local-storage-state'
 
 export default function App({ Component, pageProps }) {
-  const [coinsData, setCoinsData] = useState(data);
+  const [coinsData, setCoinsData] = useLocalStorageState("favorites", {defaultValue: data});
+  const [positions, setPositions] = useLocalStorageState("positions", {defaultValue: []});
 
   function handleToggleFavorite(id) {
 
@@ -22,8 +24,11 @@ export default function App({ Component, pageProps }) {
       setCoinsData(updatedCoinsData);
     }
   }
-
-  console.log(coinsData);
+  // add position to portfolio
+  function handleAddPosition(newPosition){
+    setPositions([...positions, newPosition])
+  }
+ 
   return (
     <>
       <GlobalStyle />
@@ -31,6 +36,8 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         coinsData={coinsData}
         onToggleFavorite={handleToggleFavorite}
+        positions={positions}
+        onAddPosition={handleAddPosition}
       />
     </>
   );
