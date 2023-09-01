@@ -5,7 +5,12 @@ import HeaderPages from "@/components/HeaderPages";
 import Form from "@/components/Form";
 import { useState } from "react";
 
-export default function Watchlist({ coinsData, onToggleFavorite, positions, onAddPosition }) {
+export default function Watchlist({
+  coinsData,
+  onToggleFavorite,
+  positions,
+  onAddPosition,
+}) {
   const [expandedItems, setExpandedItems] = useState({});
 
   const favoriteCoinsInfo = coinsData.filter((coinInfo) => coinInfo.isFavorite);
@@ -29,7 +34,9 @@ export default function Watchlist({ coinsData, onToggleFavorite, positions, onAd
       <StyledList>
         {likedCoins?.map((coin) => (
           <li key={coin.id}>
-            <button type="button" onClick={() => toggleItemExpansion(coin.id)} >+</button>
+            <button type="button" onClick={() => toggleItemExpansion(coin.id)}>
+              +
+            </button>
             <Coin
               image={coin.image}
               symbol={coin.symbol}
@@ -42,8 +49,16 @@ export default function Watchlist({ coinsData, onToggleFavorite, positions, onAd
                   ?.isFavorite
               }
             />
-            {expandedItems[coin.id] &&
-            <Form positions={positions} onAddPosition={onAddPosition}/>}
+            {expandedItems[coin.id] && (
+              <Form
+                positions={positions}
+                onAddPosition={onAddPosition}
+                image={coin.image}
+                name={coin.name}
+                symbol={coin.symbol}
+                price={coin.current_price}
+              />
+            )}
           </li>
         ))}
       </StyledList>

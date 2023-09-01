@@ -10,7 +10,7 @@ export default createGlobalStyle`
   body {
     margin: 0 auto;
     font-family: system-ui;
-    width: 667px;
+    width: 420px;
     box-shadow: 1px 1px 10px grey;
     text-align: center;
   }

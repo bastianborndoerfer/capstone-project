@@ -46,7 +46,7 @@ export default function NavBar() {
 
 const StyledUl = styled.ul`
   position: fixed;
-  width: 667px;
+  width: 420px;
   bottom: 0;
   z-index: 1;
   height: 64px;

@@ -47,6 +47,7 @@ export default function App({ Component, pageProps }) {
         positions={positions}
         onAddPosition={handleAddPosition}
         onDeletePosition={handleDeletePosition}
+        data={data}
       />
     </>
   );
