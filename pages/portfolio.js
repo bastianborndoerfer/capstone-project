@@ -8,9 +8,7 @@ export default function Portfolio({
   positions,
   setPositions,
   onDeletePosition,
-  name
 }) {
-
 
   return (
     <>
@@ -22,7 +20,6 @@ export default function Portfolio({
         setPositions={setPositions}
         onDeletePosition={onDeletePosition}
         coinsData={coinsData}
-        name={name}
       />
 
       <NavBar />

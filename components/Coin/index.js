@@ -9,6 +9,7 @@ export default function Coin({
   symbol,
   price,
   id,
+  change,
   onToggleFavorite,
   isFavorite,
 }) {
@@ -19,6 +20,7 @@ export default function Coin({
           <StyledImage src={image} alt={name} height={25} width={25} />
           <p>{symbol}</p>
           <p>{price} $</p>
+          <p>{change} %</p>
         </StyledLink>
         <LikeButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} id={id} />
       </Wrapper>
@@ -35,10 +37,10 @@ justify-content: space-evenly;
 `;
 const Wrapper = styled.div`
   margin: 8px;
-  border: black solid 2px;
-  border-radius: 15px;
+  border-bottom: black solid 2px;
   text-transform: uppercase;
   position: relative;
+  font-size: medium;
 `;
 
 const StyledImage = styled(Image)`
