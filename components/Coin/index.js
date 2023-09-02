@@ -10,6 +10,7 @@ export default function Coin({
   price,
   id,
   change,
+  changeusd,
   onToggleFavorite,
   isFavorite,
 }) {
@@ -21,6 +22,7 @@ export default function Coin({
           <p>{symbol}</p>
           <p>{price} $</p>
           <p>{change} %</p>
+          <p>{changeusd}</p>
         </StyledLink>
         <LikeButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} id={id} />
       </Wrapper>

@@ -59,6 +59,7 @@ export default function Watchlist({
                 symbol={coin.symbol}
                 price={coin.current_price}
                 change={coin.price_change_percentage_24h}
+                changeusd={coin.price_change_24h}
               />
             )}
           </li>

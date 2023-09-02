@@ -16,7 +16,7 @@ export default function Holdings({ positions, onDeletePosition }) {
     const currentPrice = position.currentprice;
     const quantity = position.quantity;
     const totalSpent = position.total;
-    const currentPositionValue = (currentPrice * quantity) - totalSpent;
+    const currentPositionValue = (currentPrice * quantity);
     return currentPositionValue;
   }
   //Funktion für den Toggle der KaufDetails
@@ -48,14 +48,14 @@ export default function Holdings({ positions, onDeletePosition }) {
           </StyledCoinInfo>
           <p>{position.currentprice}$</p>
           <p>{position.change24H.toFixed(1)}%</p>
+          <p>{position.changeusd}</p>
           <p>{position.price.hidden}</p>
           <p>{position.total.hidden}</p>
           <p>{position.date.hidden}</p>
           <StyledCoinInfo>
             ${getCurrentPositionValue(position).toFixed(2)}
             <p>
-              {position.quantity}
-              {position.symbol.toUpperCase()}
+              {position.quantity}({position.symbol.toUpperCase()})
             </p>
           </StyledCoinInfo>
           <ButtonContainer>
@@ -73,11 +73,12 @@ export default function Holdings({ positions, onDeletePosition }) {
           </dialog>
           <button onClick={toggleDetails}>i</button>
           {showDetails && (
-            <div>
+            <StyledDetails>
+              <h4>Purchase Details</h4>
               <p>Price per coin:{position.price}</p>
               <p>Total spent:{position.total}</p>
               <p>Date:{position.date}</p>
-            </div>
+            </StyledDetails>
           )}
           </ButtonContainer>
         </StyledListItem>
@@ -117,4 +118,14 @@ const StyledCoinInfo = styled.div`
 const ButtonContainer = styled.div`
 display: flex;
 flex-direction: column;
+`;
+
+const StyledDetails = styled.div`
+padding: 8px;
+  border-radius: 12px;
+  background-color: #f3f2ef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-small;
 `;

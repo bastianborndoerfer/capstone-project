@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { uid } from "uid";
 
-export default function Form({ onAddPosition, image, price, symbol, name, change }) {
+export default function Form({ onAddPosition, image, price, symbol, name, change, changeusd }) {
   const [position, setPosition] = useState({
     id: "",
     price: "",
@@ -47,13 +47,13 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
       symbol: symbol,
       currentprice: price,
       change24H: change,
+      changeusd: changeusd,
       price: data.price,
       quantity: data.quantity,
       total: data.total,
       date: data.date,
     };
     onAddPosition(newPosition);
-    console.log(newPosition);
     event.target.reset();
   }
 
@@ -76,6 +76,7 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
         </p>
         <p>{price.hidden}</p>
         <p>{change.hidden}</p>
+        <p>{changeusd.hidden}</p>
         <StyledLabel>
           Price per coin:
           <StyledInput
