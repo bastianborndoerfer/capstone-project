@@ -16,7 +16,7 @@ export default function Holdings({ positions, onDeletePosition }) {
     const currentPrice = position.currentprice;
     const quantity = position.quantity;
     const totalSpent = position.total;
-    const currentPositionValue = totalSpent - currentPrice * quantity;
+    const currentPositionValue = (currentPrice * quantity) - totalSpent;
     return currentPositionValue;
   }
   //Funktion für den Toggle der KaufDetails
@@ -31,6 +31,7 @@ export default function Holdings({ positions, onDeletePosition }) {
         <p>#</p>
         <p>Coin</p>
         <p>Price</p>
+        <p>24H</p>
         <p>Holding</p>
       </StyledListHeader>
       {positions.map((position, index) => (
@@ -45,7 +46,8 @@ export default function Holdings({ positions, onDeletePosition }) {
             />
             {position.name}({position.symbol.toUpperCase()})
           </StyledCoinInfo>
-          <p>{position.currentprice}</p>
+          <p>{position.currentprice}$</p>
+          <p>{position.change24H.toFixed(1)}%</p>
           <p>{position.price.hidden}</p>
           <p>{position.total.hidden}</p>
           <p>{position.date.hidden}</p>
@@ -56,6 +58,7 @@ export default function Holdings({ positions, onDeletePosition }) {
               {position.symbol.toUpperCase()}
             </p>
           </StyledCoinInfo>
+          <ButtonContainer>
           <button onClick={() => showButton(position)}>X</button>
           <dialog id={`deleteDialog-${position.id}`}>
             <p>Do you really want to delete the position?</p>
@@ -76,6 +79,7 @@ export default function Holdings({ positions, onDeletePosition }) {
               <p>Date:{position.date}</p>
             </div>
           )}
+          </ButtonContainer>
         </StyledListItem>
       ))}
     </StyledList>
@@ -84,29 +88,33 @@ export default function Holdings({ positions, onDeletePosition }) {
 
 const StyledList = styled.ul`
   padding: 0;
-`;
+  margin: 0;
+  `;
 
 const StyledListHeader = styled.li`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  border-bottom: 1px black solid;
 `;
 
 const StyledListItem = styled.li`
   padding: 10px;
-  margin-bottom: 10px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  border: 1px black solid;
+  justify-content: space-between;
+  border-bottom: 1px black solid;
 `;
 
 const StyledCoinInfo = styled.div`
   padding: 8px;
-  margin: auto;
   border-radius: 12px;
   background-color: #e4e3e2;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: x-small;
+`;
+
+const ButtonContainer = styled.div`
+display: flex;
+flex-direction: column;
 `;
