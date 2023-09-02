@@ -6,6 +6,17 @@ export default function PortfolioValue({ positions }) {
     0
   );
   const roundedSum = totalSum.toFixed(2);
+
+  function calculateTotalValue(positions) {
+    return positions.reduce((sum, position) => {
+      const currentPrice = position.currentprice;
+      const quantity = position.quantity;
+      const totalSpent = position.total;
+      const currentPositionValue = currentPrice * quantity - totalSpent;
+      return sum + currentPositionValue;
+    }, 0);
+  }
+
   return (
     <StyledSection>
       <h3>My Holdings</h3>
@@ -14,6 +25,10 @@ export default function PortfolioValue({ positions }) {
           <u>{roundedSum}</u>
         </strong>
       </p>
+      <ul>
+        <li>24H change:</li>
+        <li>Total P/L: ${calculateTotalValue(positions).toFixed(2)}</li>
+      </ul>
     </StyledSection>
   );
 }
@@ -21,11 +36,12 @@ export default function PortfolioValue({ positions }) {
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   border: solid black;
   border-radius: 15px;
-  width: 50%;
-  margin: 0 auto;
+  width: 75%;
+  margin: auto;
   background-color: #fff9c4; /* Hellgelbe Hintergrundfarbe */
   background-image: repeating-linear-gradient(
     45deg,
@@ -34,4 +50,5 @@ const StyledSection = styled.section`
     transparent 10px,
     transparent 20px
   );
+  list-style: none;
 `;
