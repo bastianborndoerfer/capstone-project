@@ -48,7 +48,7 @@ export default function Holdings({ positions, onDeletePosition }) {
           </StyledCoinInfo>
           <p>{position.currentprice}$</p>
           <p>{position.change24H.toFixed(1)}%</p>
-          <p>{position.changeusd}</p>
+          
           <p>{position.price.hidden}</p>
           <p>{position.total.hidden}</p>
           <p>{position.date.hidden}</p>

@@ -54,6 +54,7 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
       date: data.date,
     };
     onAddPosition(newPosition);
+    console.log(newPosition.changeusd);
     event.target.reset();
   }
 

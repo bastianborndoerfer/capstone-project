@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export default function PortfolioValue({ positions }) {
-  
-  function currentPortfolioValue(position) {
+  //My Holdings - aktueller Wert
+  function currentPortfolioValue(positions) {
     const totalValue = positions.reduce((sum, position) => {
       const currentPrice = position.currentprice;
       const quantity = position.quantity;
       const currentPositionValue = currentPrice * quantity;
       return sum + currentPositionValue;
     }, 0);
-  
+
     return totalValue;
   }
-    
 
+  // aktueller Gewinn/Verlust
   function calculateTotalValue(positions) {
     return positions.reduce((sum, position) => {
       const currentPrice = position.currentprice;
@@ -23,22 +23,25 @@ export default function PortfolioValue({ positions }) {
       return sum + currentPositionValue;
     }, 0);
   }
-
-  // function calculateTotalChangeUSD(positions) {
-  //   return positions.reduce((sum, position) => sum + position.changeusd, 0);
-  // }
+  // 24 Stunden Veränderung des Portfolio
+  function calculateTotalChangeUSD(positions) {
+    return positions.reduce(
+      (sum, position) => sum + position.changeusd * position.quantity,
+      0
+    );
+  }
 
   return (
     <StyledSection>
       <h3>My Holdings</h3>
       <p>
         <strong>
-          <u>${currentPortfolioValue(positions).toFixed(2)}</u>
+          <u>{currentPortfolioValue(positions).toFixed(2)} $</u>
         </strong>
       </p>
       <ul>
-        {/* <li>24H change: ${calculateTotalChangeUSD(positions).toFixed(4)}</li> */}
-        <li>Total P/L: ${calculateTotalValue(positions).toFixed(2)}</li>
+        <li>24H change: {calculateTotalChangeUSD(positions).toFixed(2)}$</li>
+        <li>Total P/L: {calculateTotalValue(positions).toFixed(2)}$</li>
       </ul>
     </StyledSection>
   );
@@ -62,3 +65,5 @@ const StyledSection = styled.section`
     transparent 20px
   );
 `;
+
+
