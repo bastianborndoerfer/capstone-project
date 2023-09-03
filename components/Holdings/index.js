@@ -90,6 +90,7 @@ export default function Holdings({ positions, onDeletePosition }) {
 const StyledList = styled.ul`
   padding: 0;
   margin: 0;
+  font-size: small;
   `;
 
 const StyledListHeader = styled.li`
@@ -108,7 +109,7 @@ const StyledListItem = styled.li`
 const StyledCoinInfo = styled.div`
   padding: 8px;
   border-radius: 12px;
-  background-color: #e4e3e2;
+  
   display: flex;
   flex-direction: column;
   align-items: center;

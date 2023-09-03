@@ -51,19 +51,13 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #f3f2ef;
   align-items: center;
-  border: solid black;
+  border: 1px solid black;
   border-radius: 15px;
   width: 75%;
   margin: auto;
-  background-color: #fff9c4; /* Hellgelbe Hintergrundfarbe */
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5) 10px,
-    transparent 10px,
-    transparent 20px
-  );
+  
 `;
 
 
