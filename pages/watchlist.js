@@ -5,7 +5,12 @@ import HeaderPages from "@/components/HeaderPages";
 import Form from "@/components/Form";
 import { useState } from "react";
 
-export default function Watchlist({ coinsData, onToggleFavorite, positions, onAddPosition }) {
+export default function Watchlist({
+  coinsData,
+  onToggleFavorite,
+  positions,
+  onAddPosition,
+}) {
   const [expandedItems, setExpandedItems] = useState({});
 
   const favoriteCoinsInfo = coinsData.filter((coinInfo) => coinInfo.isFavorite);
@@ -29,21 +34,34 @@ export default function Watchlist({ coinsData, onToggleFavorite, positions, onAd
       <StyledList>
         {likedCoins?.map((coin) => (
           <li key={coin.id}>
-            <button type="button" onClick={() => toggleItemExpansion(coin.id)} >+</button>
+            <button type="button" onClick={() => toggleItemExpansion(coin.id)}>
+              +
+            </button>
             <Coin
               image={coin.image}
               symbol={coin.symbol}
               price={coin.current_price}
               id={coin.id}
               name={coin.name}
+              change={coin.price_change_percentage_24h.toFixed(1)}
               onToggleFavorite={() => onToggleFavorite(coin.id)}
               isFavorite={
                 coinsData?.find((coinInfo) => coinInfo.id === coin.id)
                   ?.isFavorite
               }
             />
-            {expandedItems[coin.id] &&
-            <Form positions={positions} onAddPosition={onAddPosition}/>}
+            {expandedItems[coin.id] && (
+              <Form
+                positions={positions}
+                onAddPosition={onAddPosition}
+                image={coin.image}
+                name={coin.name}
+                symbol={coin.symbol}
+                price={coin.current_price}
+                change={coin.price_change_percentage_24h}
+                changeusd={coin.price_change_24h}
+              />
+            )}
           </li>
         ))}
       </StyledList>
