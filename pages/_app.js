@@ -34,14 +34,14 @@ export default function App({ Component, pageProps }) {
   // add position to portfolio
   function handleAddPosition(newPosition) {
     setPositions([...positions, newPosition]);
-    toast.info('Position added!');
+    toast.success('Position added!');
   }
 
   // delete a position
   function handleDeletePosition(deletePosition){
     const remainingPositions = positions.filter((position) => position.id !== deletePosition.id);
      setPositions(remainingPositions);
-     toast.info('Position deleted!');
+     toast.error('Position deleted!');
   }
 
   return (
