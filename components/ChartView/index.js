@@ -39,7 +39,7 @@ export default function Chart({ id }) {
     y: value[1].toFixed(2),
   }));
 
-  const options = { responsive: true };
+  const options = { responsive: true, plugins: { legend: false } };
   const chartData = {
     labels: coinChartData.map((value) => moment(value.x).format("MMMYY")),
     datasets: [
