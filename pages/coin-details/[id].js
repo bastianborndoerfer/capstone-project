@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import CoinDetails from "@/components/CoinDetails";
 import CoinHeader from "@/components/CoinHeader";
-import useSWR from "swr";
 import Chart from "@/components/ChartView";
 
 export default function ShowCoinDetails({ coinsData, onToggleFavorite }) {

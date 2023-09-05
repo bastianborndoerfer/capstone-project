@@ -12,7 +12,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useRouter } from "next/router";
 
 ChartJS.register(
   CategoryScale,
@@ -27,10 +26,7 @@ ChartJS.register(
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Chart() {
-  const router = useRouter();
-  const { id } = router.query;
-
+export default function Chart({ id }) {
   const { data, error, isLoading } = useSWR(
     `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=max`,
     fetcher
@@ -42,10 +38,9 @@ export default function Chart() {
     x: value[0],
     y: value[1].toFixed(2),
   }));
-  console.log(coinChartData);
 
   const options = { responsive: true };
-  const chartdata = {
+  const chartData = {
     labels: coinChartData.map((value) => moment(value.x).format("MMMDD")),
     datasets: [
       {
@@ -57,9 +52,5 @@ export default function Chart() {
     ],
   };
 
-  return (
-    <div>
-      <Line options={options} data={chartdata} />
-    </div>
-  );
+  return <Line options={options} data={chartData} />;
 }
