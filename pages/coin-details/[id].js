@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
 import CoinDetails from "@/components/CoinDetails";
 import CoinHeader from "@/components/CoinHeader";
+import useSWR from "swr";
+import Chart from "@/components/ChartView";
 
-export default function ShowCoinDetails({
-  coinsData,
-  onToggleFavorite,
-}) {
+export default function ShowCoinDetails({ coinsData, onToggleFavorite }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -32,6 +31,7 @@ export default function ShowCoinDetails({
         $ {selectedCoin.current_price}{" "}
         {selectedCoin.price_change_percentage_24h}
       </p>
+      <Chart id={selectedCoin.id} />
       <CoinDetails
         mcrank={selectedCoin.market_cap_rank}
         mc={selectedCoin.market_cap}

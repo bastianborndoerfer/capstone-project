@@ -4,6 +4,7 @@ import styled from "styled-components";
 import HeaderPages from "@/components/HeaderPages";
 import Form from "@/components/Form";
 import { useState } from "react";
+import Chart from "@/components/ChartView";
 
 export default function Watchlist({
   coinsData,
