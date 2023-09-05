@@ -49,16 +49,14 @@ const StyledUl = styled.ul`
   width: 420px;
   bottom: 0;
   z-index: 1;
-  height: 64px;
+  height: 60px;
   margin: 0;
   padding: 8px;
   display: flex;
   justify-content: space-around;
   list-style: none;
-  border: solid;
-  border-radius: 15px 15px 0 0;
   box-shadow: 1px 1px 10px grey;
-  background-color: white;  
+  background-color: #d9d9d9;  
 `;
 
 const StyledLi = styled.li`
@@ -71,6 +69,6 @@ const StyledImage = styled(Image)`
   ${({ isActive }) =>
     isActive &&
     css`
-      background-color: antiquewhite;
+      transform: scale(1.4);
     `}
 `;
