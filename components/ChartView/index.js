@@ -41,7 +41,7 @@ export default function Chart({ id }) {
 
   const options = { responsive: true };
   const chartData = {
-    labels: coinChartData.map((value) => moment(value.x).format("MMMDD")),
+    labels: coinChartData.map((value) => moment(value.x).format("MMMYY")),
     datasets: [
       {
         fill: true,
