@@ -11,33 +11,36 @@ export default function NavBar() {
         <Link href={"/"}>
           <StyledImage
             src="/market.svg"
-            height={40}
-            width={40}
+            height={25}
+            width={25}
             alt="chart icon"
             isActive={router.pathname === "/"}
           />
+          <p>Market</p>
         </Link>
       </StyledLi>
       <StyledLi>
         <Link href={"./watchlist"}>
           <StyledImage
             src="/favoriteButton_aktiv.svg"
-            height={40}
-            width={40}
+            height={25}
+            width={25}
             alt="a star icon"
             isActive={router.pathname === "/watchlist"}
           />
+          <p>Watchlist</p>
         </Link>
       </StyledLi>
       <StyledLi>
         <Link href={"./portfolio"}>
           <StyledImage
             src="/portfolio.svg"
-            height={40}
-            width={40}
+            height={25}
+            width={25}
             alt="portfolio icon"
             isActive={router.pathname === "/portfolio"}
           />
+          <p>Portfolio</p>
         </Link>
       </StyledLi>
     </StyledUl>
@@ -49,14 +52,15 @@ const StyledUl = styled.ul`
   width: 420px;
   bottom: 0;
   z-index: 1;
-  height: 60px;
+  height: 68px;
   margin: 0;
   padding: 8px;
   display: flex;
   justify-content: space-around;
   list-style: none;
-  box-shadow: 1px 1px 10px grey;
-  background-color: #d9d9d9;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  background-color: #fff;
+  font-size: small ;
 `;
 
 const StyledLi = styled.li`

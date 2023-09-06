@@ -36,7 +36,7 @@ export default createGlobalStyle`
     color: black;
     transition: trasform 0.3s ease;
     &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   
   }
   }

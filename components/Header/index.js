@@ -4,8 +4,10 @@ import styled from "styled-components";
 export default function Header({ handleSearch }) {
   return (
     <StyledHeader>
-      <Image src="/logo.svg" height={50} width={50} alt="A Logo Placeholder" />
+      <StyledLogo>
+      <Image src="/logo.svg" height={30} width={30} alt="A Logo Placeholder" />
       <h2>KryptoScout</h2>
+      </StyledLogo>
       <StyledInput
         type="text"
         placeholder="Search for a coin ..."
@@ -16,13 +18,13 @@ export default function Header({ handleSearch }) {
 }
 
 const StyledHeader = styled.header`
-  display: flex;
-  
+ display: flex;
+  font-family: "inter";
   align-items: center;
   justify-content: space-between;
   padding: 8px;
   height: 54px;
-  background-color: #039a9a;
+  background-color: #fff;
   color: #1c274c;
   position: fixed;
   z-index: 50;
@@ -30,6 +32,17 @@ const StyledHeader = styled.header`
   right: 0;
   left: 0;
 `;
+
+const StyledLogo = styled.span`
+display: flex;
+flex-direction: column;
+align-items: center;
+h2 {
+  margin-top: -8px;
+  margin-bottom: 4px;
+}
+`;
+
 
 const StyledInput = styled.input`
   padding: 8px;
