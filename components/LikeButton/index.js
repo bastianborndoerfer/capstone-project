@@ -12,7 +12,12 @@ export default function LikeButton({ isFavorite, onToggleFavorite }) {
           height={30}
         />
       ) : (
-        <Image src={"/favoriteButton.svg"} alt="unselected star favorite button" width={30} height={30} />
+        <Image
+          src={"/favoriteButton.svg"}
+          alt="unselected star favorite button"
+          width={30}
+          height={30}
+        />
       )}
     </Button>
   );
@@ -25,7 +30,7 @@ const Button = styled.button`
   }
   border: none;
   position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
+  right: 0;
+  top: -8px;
   z-index: 1;
 `;

@@ -6,6 +6,8 @@ import LikeButton from "../LikeButton";
 export default function Coin({
   image,
   name,
+  rank,
+  marketcap,
   symbol,
   price,
   id,
@@ -15,27 +17,34 @@ export default function Coin({
   isFavorite,
 }) {
   return (
-    <StyledArticle>
+   
       <Wrapper>
         <StyledLink href={`/coin-details/${id}`}>
+          <StyledRank>
+          <p>{rank}</p>
+          </StyledRank>
+          <StyledCoin>
           <StyledImage src={image} alt={name} height={25} width={25} />
           <p>{symbol}</p>
-          <p>{price} $</p>
+          </StyledCoin>
           <p>{change} %</p>
+          <StyledPrices>
+          <p>{price}</p>
+          <p>{marketcap}</p>
+          </StyledPrices>
           <p>{changeusd}</p>
         </StyledLink>
         <LikeButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} id={id} />
       </Wrapper>
-    </StyledArticle>
+    
   );
 }
 
-const StyledArticle = styled.article`
-  text-align: center;
-`;
+
 const StyledLink = styled(Link)`
 display: flex;
-justify-content: space-evenly;
+align-items: center;
+justify-content: space-between;
 `;
 const Wrapper = styled.div`
   margin: 8px;
@@ -47,4 +56,22 @@ const Wrapper = styled.div`
 
 const StyledImage = styled(Image)`
   align-self: center;
+  margin-bottom: -10px;
+
+`;
+const StyledRank = styled.span`
+font-size: small;
+color: #656c6a;
+margin-right: -24px;
+
+`;
+
+const StyledCoin = styled.span`
+font-size: small;
+align-items: center;
+
+`;
+
+const StyledPrices = styled.span`
+text-align: right;
 `;

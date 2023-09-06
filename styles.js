@@ -25,15 +25,16 @@ export default createGlobalStyle`
     margin: 0 auto;
     font-family: "inter";
     width: 420px;
-    box-shadow: 1px 1px 10px grey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #f2f2f2;
+    background-color: #fff;
     
   }
 
   a {
     text-decoration: none;
     color: black;
+    transition: trasform 0.3s ease;
     &:hover {
     transform: scale(1.05);
   
@@ -44,9 +45,16 @@ export default createGlobalStyle`
     background-color: transparent;
   }
 
-  ul, li {
+  ul {
     list-style: none;
+    padding-left: 20px;
   }
+  li {
+    margin-bottom: 5px;
+  }
+
+  
 `;
+
 
 
