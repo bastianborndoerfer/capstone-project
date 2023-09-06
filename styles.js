@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { Inter } from "@next/font/google";
 
+const inter = Inter({ subsets: ["latin"] });
 
 export default createGlobalStyle`
 
@@ -19,9 +21,9 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  body, header {
     margin: 0 auto;
-    font-family: system-ui;
+    font-family: "inter";
     width: 420px;
     box-shadow: 1px 1px 10px grey;
     text-align: center;
@@ -34,6 +36,17 @@ export default createGlobalStyle`
     color: black;
     &:hover {
     transform: scale(1.05);
+  
   }
+  }
+
+  Image {
+    background-color: transparent;
+  }
+
+  ul, li {
+    list-style: none;
   }
 `;
+
+
