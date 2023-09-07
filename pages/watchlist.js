@@ -4,6 +4,7 @@ import styled from "styled-components";
 import HeaderPages from "@/components/HeaderPages";
 import Form from "@/components/Form";
 import { useState } from "react";
+import currencyFormat from "@/src/utils";
 
 export default function Watchlist({
   coinsData,
@@ -41,7 +42,7 @@ export default function Watchlist({
             <Coin
               image={coin.image}
               symbol={coin.symbol.toUpperCase()}
-              price={coin.current_price}
+              price={currencyFormat(coin.current_price)}
               id={coin.id}
               name={coin.name}
               change={coin.price_change_percentage_24h.toFixed(1)}
