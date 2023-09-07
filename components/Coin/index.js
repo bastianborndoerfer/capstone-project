@@ -49,7 +49,6 @@ justify-content: space-between;
 const Wrapper = styled.div`
   margin: 8px;
   border-bottom: lightgrey solid 1px;
-  text-transform: uppercase;
   position: relative;
   font-size: medium;
 `;

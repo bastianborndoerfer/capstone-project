@@ -12,7 +12,7 @@ export default function List({ coinsData, onToggleFavorite }) {
         <li key={coin.id}>
           <Coin
             image={coin.image}
-            symbol={coin.symbol}
+            symbol={coin.symbol.toUpperCase()}
             price={currencyFormat(coin.current_price)}
             id={coin.id}
             name={coin.name}

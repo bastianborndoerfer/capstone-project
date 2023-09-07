@@ -34,23 +34,53 @@ export default function Chart({ id }) {
   if (error) return "An error has occurred.";
   if (isLoading) return "Loading...";
 
-  const coinChartData = data.prices.map((value) => ({
-    x: value[0],
-    y: value[1].toFixed(2),
-  }));
+  const coinChartData = data.prices.reduce((acc, value) => {
+    const date = moment(value[0]);
+    const monthYear = date.format("MMMYY");
 
-  const options = { responsive: true, plugins: { legend: false } };
-  const chartData = {
-    labels: coinChartData.map((value) => moment(value.x).format("MMMYY")),
-    datasets: [
-      {
-        fill: true,
-        data: coinChartData.map((value) => value.y),
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+    if (!acc[monthYear]) {
+      acc[monthYear] = {
+        x: date.startOf("month").valueOf(),
+        y: value[1].toFixed(2),
+      };
+    }
+
+    return acc;
+  }, {});
+
+  const options = { responsive: true, plugins: { legend: false }, elements: {
+    line: {
+      borderWidth: 0.2, // Hier können Sie die Borderstärke anpassen
+    },
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false, 
       },
-    ],
-  };
+    },
+    y: {
+      grid: {
+        display: false,
+      },
+      ticks: {
+        precision: 6,
+      }
+    },
+  },
+};
+const chartData = {
+  labels: Object.keys(coinChartData),
+  datasets: [
+    {
+      fill: true,
+      data: Object.values(coinChartData),
+      borderColor: "#656c6a",
+      backgroundColor: "#e4e3e2",
+      pointRadius: 0,
+    },
+  ],
+};
 
   return <Line options={options} data={chartData} />;
 }

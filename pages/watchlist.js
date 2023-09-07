@@ -28,7 +28,6 @@ export default function Watchlist({
   return (
     <>
       <section>
-        <HeaderPages />
         <h2>My Watchlist</h2>
       </section>
       <StyledList>
@@ -39,7 +38,7 @@ export default function Watchlist({
             </button>
             <Coin
               image={coin.image}
-              symbol={coin.symbol}
+              symbol={coin.symbol.toUpperCase()}
               price={coin.current_price}
               id={coin.id}
               name={coin.name}

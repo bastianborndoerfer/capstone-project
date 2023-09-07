@@ -6,8 +6,8 @@ export default function HeaderPages() {
     <StyledHeader>
       <Image
         src="/placeholder.png"
-        height={100}
-        width={100}
+        height={20}
+        width={20}
         alt="A Logo Placeholder"
       />
       <h1>KryptoScout</h1>
@@ -18,6 +18,6 @@ export default function HeaderPages() {
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  //justify-content: space-between;
   align-items: center;
 `;
