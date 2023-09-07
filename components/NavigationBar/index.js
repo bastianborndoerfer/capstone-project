@@ -51,7 +51,7 @@ const StyledUl = styled.ul`
   position: fixed;
   width: 420px;
   bottom: 0;
-  z-index: 1;
+  z-index: 100;
   height: 68px;
   margin: 0;
   padding: 8px;

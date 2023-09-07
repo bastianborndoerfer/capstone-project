@@ -51,12 +51,14 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #f3f2ef;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 15px;
   width: 75%;
   margin: auto;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;
   
 `;
 

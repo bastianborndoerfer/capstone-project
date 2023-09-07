@@ -39,12 +39,17 @@ export default function CoinDetails({
 }
 
 const StyledTable = styled.table`
-  margin: 24px auto;
+  margin: 40px auto;
   width: 90%;
   border-collapse: collapse;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #f3f2ef;
+  box-shadow: 0 0 20px 8px #d0d0d0;
   color: #656c6a;
+  
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  
 `;
 
 const StyledTd = styled.td`
@@ -52,54 +57,3 @@ const StyledTd = styled.td`
   text-align: ${(props) => (props.alignRight ? "right" : "left")};
   border-bottom: 1px solid #656c6a;
 `;
-
-//     <Wrapper>
-//       <StyledList>
-//         <StyledListItem>Market Cap Rank:</StyledListItem>
-//         <StyledListItem>Market Cap:</StyledListItem>
-//         <StyledListItem>24H High:</StyledListItem>
-//         <StyledListItem>24H Low:</StyledListItem>
-//         <StyledListItem>All Time High:</StyledListItem>
-//         <StyledListItem>All Time High Change:</StyledListItem>
-//       </StyledList>
-//       <StyledList>
-//       <StyledListItem>#{mcrank}</StyledListItem>
-//         <StyledListItem>{mc}</StyledListItem>
-//         <StyledListItem>{dailyhigh}</StyledListItem>
-//         <StyledListItem>{dailylow}</StyledListItem>
-//         <StyledListItem>{ath}</StyledListItem>
-//         <StyledListItem>{athchange}</StyledListItem>
-//       </StyledList>
-//     </Wrapper>
-//   );
-// }
-
-// const Wrapper = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//   background-color: #e4e3e2;
-//   border-radius: 15px;
-//   text-align: justify;
-//   width: 90%;
-//   margin: 24px auto;
-// `;
-
-// const StyledList = styled.ul`
-//   list-style: none;
-//   padding: 32px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 16px;
-// `;
-
-// const StyledListItem = styled.li`
-//   border-bottom: solid 0.025rem;
-// `;
-
-// const StyledListItemRight = styled(StyledListItem)`
-//   justify-self: end;
-//   text-align: right;
-//   width: 100%;
-//   padding-right: 16px;
-// `;

@@ -16,7 +16,7 @@ export default function Holdings({ positions, onDeletePosition }) {
     const currentPrice = position.currentprice;
     const quantity = position.quantity;
     const totalSpent = position.total;
-    const currentPositionValue = (currentPrice * quantity);
+    const currentPositionValue = currentPrice * quantity;
     return currentPositionValue;
   }
   //Funktion für den Toggle der KaufDetails
@@ -48,7 +48,7 @@ export default function Holdings({ positions, onDeletePosition }) {
           </StyledCoinInfo>
           <p>{position.currentprice}$</p>
           <p>{position.change24H.toFixed(1)}%</p>
-          
+
           <p>{position.price.hidden}</p>
           <p>{position.total.hidden}</p>
           <p>{position.date.hidden}</p>
@@ -59,27 +59,27 @@ export default function Holdings({ positions, onDeletePosition }) {
             </p>
           </StyledCoinInfo>
           <ButtonContainer>
-          <button onClick={() => showButton(position)}>X</button>
-          <dialog id={`deleteDialog-${position.id}`}>
-            <p>Do you really want to delete the position?</p>
-            <form method="dialog">
-              <div>
-                <button>Cancel</button>
-                <button onClick={() => onDeletePosition(position)}>
-                  Confirm
-                </button>
-              </div>
-            </form>
-          </dialog>
-          <button onClick={toggleDetails}>i</button>
-          {showDetails && (
-            <StyledDetails>
-              <h4>Purchase Details</h4>
-              <p>Price per coin:{position.price}</p>
-              <p>Total spent:{position.total}</p>
-              <p>Date:{position.date}</p>
-            </StyledDetails>
-          )}
+            <button onClick={() => showButton(position)}>X</button>
+            <dialog id={`deleteDialog-${position.id}`}>
+              <p>Do you really want to delete the position?</p>
+              <form method="dialog">
+                <div>
+                  <button>Cancel</button>
+                  <button onClick={() => onDeletePosition(position)}>
+                    Confirm
+                  </button>
+                </div>
+              </form>
+            </dialog>
+            <button onClick={toggleDetails}>i</button>
+            {showDetails && (
+              <StyledDetails>
+                <h4>Purchase Details</h4>
+                <p>Price per coin:{position.price}</p>
+                <p>Total spent:{position.total}</p>
+                <p>Date:{position.date}</p>
+              </StyledDetails>
+            )}
           </ButtonContainer>
         </StyledListItem>
       ))}
@@ -89,9 +89,15 @@ export default function Holdings({ positions, onDeletePosition }) {
 
 const StyledList = styled.ul`
   padding: 0;
-  margin: 0;
+  margin: 32px auto;
   font-size: small;
-  `;
+  width: 95%;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+`;
 
 const StyledListHeader = styled.li`
   display: flex;
@@ -109,7 +115,7 @@ const StyledListItem = styled.li`
 const StyledCoinInfo = styled.div`
   padding: 8px;
   border-radius: 12px;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,14 +123,11 @@ const StyledCoinInfo = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledDetails = styled.div`
-padding: 8px;
-  border-radius: 12px;
-  background-color: #f3f2ef;
   display: flex;
   flex-direction: column;
   align-items: center;
