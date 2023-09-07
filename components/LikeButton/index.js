@@ -27,6 +27,7 @@ const Button = styled.button`
   background-color: transparent;
   &:hover {
     background-color: lightgrey;
+    border-radius: 100%;
   }
   border: none;
   position: absolute;

@@ -27,15 +27,17 @@ export default function Watchlist({
 
   return (
     <>
-      <section>
-        <h2>My Watchlist</h2>
-      </section>
+      <StyledHeader>My Watchlist</StyledHeader>
       <StyledList>
         {likedCoins?.map((coin) => (
-          <li key={coin.id}>
-            <button type="button" onClick={() => toggleItemExpansion(coin.id)}>
-              +
-            </button>
+          <StyledListItem key={coin.id}>
+            <StyledButton
+              type="button"
+              onClick={() => toggleItemExpansion(coin.id)}
+            >
+              {expandedItems[coin.id] ? "-" : "+"}
+            </StyledButton>
+
             <Coin
               image={coin.image}
               symbol={coin.symbol.toUpperCase()}
@@ -61,16 +63,35 @@ export default function Watchlist({
                 changeusd={coin.price_change_24h}
               />
             )}
-          </li>
+          </StyledListItem>
         ))}
       </StyledList>
       <NavBar />
     </>
   );
 }
+const StyledHeader = styled.h2`
+  padding: 20px;
+  height: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
 
 const StyledList = styled.ul`
   padding: 0;
   padding-bottom: 48px;
   list-style: none;
+`;
+
+const StyledListItem = styled.li`
+  position: relative;
+`;
+
+const StyledButton = styled.button`
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  z-index: 33;
+  border: none;
+  background-color: transparent;
+  font-size: large;
 `;
