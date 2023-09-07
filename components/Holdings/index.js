@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
+import currencyFormat from "@/src/utils";
 
 export default function Holdings({ positions, onDeletePosition }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -46,7 +47,7 @@ export default function Holdings({ positions, onDeletePosition }) {
             />
             {position.name}({position.symbol.toUpperCase()})
           </StyledCoinInfo>
-          <p>{position.currentprice}$</p>
+          <p>{currencyFormat(position.currentprice)}</p>
           <p>{position.change24H.toFixed(1)}%</p>
 
           <p>{position.price.hidden}</p>

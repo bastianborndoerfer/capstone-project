@@ -1,11 +1,10 @@
 import Coin from "../Coin";
 import  styled  from "styled-components";
+import currencyFormat from "@/src/utils";
 
 export default function List({ coinsData, onToggleFavorite }) {
   
-  function currencyFormat(num) {
-    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-  }
+  
   return (
     <StyledList>
       {coinsData?.map((coin) => (
