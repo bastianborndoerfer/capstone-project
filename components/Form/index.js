@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { uid } from "uid";
 
@@ -54,7 +55,6 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
       date: data.date,
     };
     onAddPosition(newPosition);
-    console.log(newPosition.changeusd);
     event.target.reset();
   }
 
@@ -67,17 +67,22 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
       date: "",
     });
   }
+
+  const formRef = useRef(null);
+  useEffect(() => {
+    formRef.current.scrollIntoView({behavior: "smooth"}); }, []);
+  
   return (
     <Wrapper>
       <h3>Add Transaction:</h3>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm ref={formRef} onSubmit={handleSubmit}>
         <Image src={image} alt={name} height={25} width={25} />
         <p>
           {name}({symbol.toUpperCase()})
         </p>
-        <p>{price.hidden}</p>
+        {/* <p>{price.hidden}</p>
         <p>{change.hidden}</p>
-        <p>{changeusd.hidden}</p>
+        <p>{changeusd.hidden}</p> */}
         <StyledLabel>
           Price per coin:
           <StyledInput
@@ -127,16 +132,17 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
 }
 
 const Wrapper = styled.div`
-  width: 250px;
-  display: flex;
-  flex-direction: column;
+ width: 250px;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: lightgray;
   margin-top: 10px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  box-shadow: 0 0 20px 8px #d0d0d0;
   margin: 0 auto;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+
 `;
 
 const StyledForm = styled.form`

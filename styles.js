@@ -25,7 +25,6 @@ export default createGlobalStyle`
     margin: 0 auto;
     font-family: "inter";
     width: 420px;
-    height: 896px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     background-color: #fff;
