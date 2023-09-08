@@ -58,9 +58,10 @@ const StyledUl = styled.ul`
   display: flex;
   justify-content: space-around;
   list-style: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  background-color: #fff;
-  font-size: small ;
+  background-color: #1d2022;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  font-size: small;
 `;
 
 const StyledLi = styled.li`
@@ -75,4 +76,5 @@ const StyledImage = styled(Image)`
     css`
       transform: scale(1.4);
     `}
+  border: #f4f4f4;
 `;

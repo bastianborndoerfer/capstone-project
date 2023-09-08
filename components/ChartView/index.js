@@ -50,7 +50,7 @@ export default function Chart({ id }) {
 
   const options = { responsive: true, plugins: { legend: false }, elements: {
     line: {
-      borderWidth: 0.2, // Hier können Sie die Borderstärke anpassen
+      borderWidth: 0.2,
     },
   },
   scales: {
@@ -61,7 +61,7 @@ export default function Chart({ id }) {
     },
     y: {
       grid: {
-        display: false,
+        display: true,
       },
       ticks: {
         precision: 6,

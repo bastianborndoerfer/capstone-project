@@ -1,17 +1,17 @@
 import { createGlobalStyle } from "styled-components";
-import { Inter } from "@next/font/google";
+import { Rubik } from "@next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export default createGlobalStyle`
 
 :root {
----primary-color: #039a9a; //petrol
----secondary-color: #90d033; //hellgrün
----grey1-color: #f3f2ef; //hellgrau
----grey2-color: #e4e3e2; //mittelgrau
----grey3-color: #656c6a; //dunkelgrau
----dark: #121212;
+--background: #26272b; // dunkel
+--text: #f4f4f4; // hell
+--grey1-color: #f3f2ef; //hellgrau
+--grey2-color: #e4e3e2; //mittelgrau
+--grey3-color: #656c6a; //dunkelgrau
+--dark: #121212;
 
 }
 
@@ -19,40 +19,49 @@ export default createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-
-  body, header {
-    margin: 0 auto;
-    font-family: "inter";
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #fff;
-    @media only screen and (min-width: 415px) {
-      width: 414px;
+    background-color: #26272b;
+    color: #f4f4f4;
+    
+    
     
   }
-  }
+  
   a {
     text-decoration: none;
-    color: black;
-    transition: trasform 0.3s ease;
+    color: #f4f4ff;
     &:hover {
-    transform: scale(1.03);
+      transform: scale(1.03);
+      transition: trasform 0.3s ease-in-out;
+      cursor: pointer;
   
   }
+  }
+  h1 {
+    text-align: center;
+    margin: 1rem;
   }
 
   Image {
     background-color: transparent;
+    
   }
 
-  ul {
+  /* ul {
     list-style: none;
     padding-left: 20px;
   }
   li {
     margin-bottom: 5px;
-  }
+  } */
 
   
 `;

@@ -28,12 +28,14 @@ export default function ShowCoinDetails({ coinsData, onToggleFavorite }) {
         onToggleFavorite={() => onToggleFavorite(selectedCoin.id)}
       />
       <StyledPrice>
-        <p>${selectedCoin.current_price}</p>
+        <p>${selectedCoin.current_price.toLocaleString()}</p>
         <StyledPercent isNegative={selectedCoin.price_change_percentage_24h < 0}>
           <p>{selectedCoin.price_change_percentage_24h.toFixed(2)}%</p>
         </StyledPercent>
       </StyledPrice>
+      <StyledChart>
       <Chart id={selectedCoin.id} />
+      </StyledChart>
       <CoinDetails
         mcrank={selectedCoin.market_cap_rank}
         mc={selectedCoin.market_cap}
@@ -51,11 +53,15 @@ display: flex;
 gap: 1rem;;
 font-size: xx-large;
 font-weight: 400;
-margin-left: 16px;
+margin: 0 0 16px 16px;
 align-items: center;
 `;
 
 const StyledPercent = styled.span`
   color: ${(props) => (props.isNegative ? "red" : "green")};
   font-size: medium;
+`;
+
+const StyledChart = styled.div`
+padding: 16px;
 `;

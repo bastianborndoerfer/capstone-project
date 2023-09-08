@@ -1,7 +1,6 @@
 import NavBar from "@/components/NavigationBar";
 import Coin from "@/components/Coin";
 import styled from "styled-components";
-import HeaderPages from "@/components/HeaderPages";
 import Form from "@/components/Form";
 import { useState } from "react";
 import currencyFormat from "@/src/utils";
@@ -29,9 +28,12 @@ export default function Watchlist({
   return (
     <>
       <StyledHeader>My Watchlist</StyledHeader>
-      <StyledList>
-        {likedCoins?.map((coin) => (
-          <StyledListItem key={coin.id}>
+      {likedCoins.length === 0 ? (
+        <EmptyState>The watchlist is empty!</EmptyState>
+      ) : (
+        <StyledList>
+          {likedCoins?.map((coin) => (
+            <StyledListItem key={coin.id}>
             <StyledButton
               type="button"
               onClick={() => toggleItemExpansion(coin.id)}
@@ -67,6 +69,7 @@ export default function Watchlist({
           </StyledListItem>
         ))}
       </StyledList>
+      )}
       <NavBar />
     </>
   );
@@ -95,4 +98,14 @@ const StyledButton = styled.button`
   border: none;
   background-color: transparent;
   font-size: large;
+`;
+
+const EmptyState = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  text-align: center;
+  font-size: 18px;
+  color: gray;
 `;

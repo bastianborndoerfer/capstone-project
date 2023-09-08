@@ -1,4 +1,3 @@
-import HeaderPages from "@/components/HeaderPages";
 import Holdings from "@/components/Holdings";
 import NavBar from "@/components/NavigationBar";
 import PortfolioValue from "@/components/PortfolioVolume";

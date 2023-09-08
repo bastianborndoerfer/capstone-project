@@ -15,8 +15,8 @@ export default function LikeButton({ isFavorite, onToggleFavorite }) {
         <Image
           src={"/favoriteButton.svg"}
           alt="unselected star favorite button"
-          width={24}
-          height={24}
+          width={20}
+          height={20}
         />
       )}
     </Button>
@@ -24,14 +24,15 @@ export default function LikeButton({ isFavorite, onToggleFavorite }) {
 }
 
 const Button = styled.button`
-  background-color: transparent;
+  background: transparent;
   &:hover {
     background-color: lightgrey;
     border-radius: 100%;
+    padding: 2px;
   }
-  border: none;
+  border: white;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 24px;
+  top: 20px;
   z-index: 1;
 `;

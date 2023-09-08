@@ -142,6 +142,7 @@ const Wrapper = styled.div`
   background: #f2f2f2;
   overflow: hidden;
   border-radius: 20px;
+  color: #26272b;
 
 `;
 

@@ -17,60 +17,65 @@ export default function Coin({
   isFavorite,
 }) {
   return (
-   
-      <Wrapper>
-        <StyledLink href={`/coin-details/${id}`}>
-          <StyledRank>
+    <Wrapper>
+      <StyledLink href={`/coin-details/${id}`}>
+        <StyledRank>
           <p>{rank}</p>
-          </StyledRank>
-          <StyledCoin>
-          <StyledImage src={image} alt={name} height={25} width={25} />
+        </StyledRank>
+        <StyledCoin>
+          <Image src={image} alt={name} height={25} width={25} />
           <p>{symbol}</p>
-          </StyledCoin>
+        </StyledCoin>
+        <StyledPercent isNegative={change < 0}>
           <p>{change} %</p>
-          <StyledPrices>
-          <p>{price}</p>
-          <p>{marketcap}</p>
-          </StyledPrices>
-          <p>{changeusd}</p>
-        </StyledLink>
-        <LikeButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} id={id} />
-      </Wrapper>
-    
+        </StyledPercent>
+        <p>{price}</p>
+        <p>{marketcap}</p>
+        <p>{changeusd}</p>
+      </StyledLink>
+      <LikeButton
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+        id={id}
+      />
+    </Wrapper>
   );
 }
 
-
 const StyledLink = styled(Link)`
-display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #26272b;
+  box-shadow: 0px 0px 12px #18191b;
+  border-radius: 8px;
+  margin: 2rem 1rem;
+  padding: 0.7rem .5rem;
+  font-size: 0.75rem;
 `;
 const Wrapper = styled.div`
-  margin: 8px;
-  border-bottom: lightgrey solid 1px;
   position: relative;
-  font-size: medium;
 `;
 
-const StyledImage = styled(Image)`
-  align-self: center;
-  margin-bottom: -10px;
-
-`;
 const StyledRank = styled.span`
-font-size: small;
-color: #656c6a;
-margin-right: -24px;
-
+  font-size: small;
+  color: #656c6a;
 `;
 
 const StyledCoin = styled.span`
-font-size: small;
-align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+  align-items: center;
 `;
 
 const StyledPrices = styled.span`
-text-align: right;
+  text-align: right;
 `;
+
+const StyledPercent = styled.span`
+  background-color: ${(props) => (props.isNegative ? "red" : "green")};
+  padding: 4px;
+  font-size: 0.55rem;
+  border-radius: 12px;
+  `;
