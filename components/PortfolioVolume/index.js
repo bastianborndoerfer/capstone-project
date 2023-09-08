@@ -37,17 +37,23 @@ export default function PortfolioValue({ positions }) {
       <StyledSection>
         <StyledHoldings>
           <p>My Holdings</p>
-          <p><u>{currencyFormat(currentPortfolioValue(positions))}</u></p>
+          <p>
+            <u>{currencyFormat(currentPortfolioValue(positions))}</u>
+          </p>
         </StyledHoldings>
         <StyledHoldingDetails>
           <ul>
             <li>24H change:</li>
             <li>Total P/L:</li>
           </ul>
-          <ul>
-            <li>{currencyFormat(calculateTotalChangeUSD(positions))}</li>
-            <li>{currencyFormat(calculateTotalValue(positions))}</li>
-          </ul>
+          <StyledChanges>
+            <StyledListValue positive={calculateTotalChangeUSD(positions) > 0}>
+              {currencyFormat(calculateTotalChangeUSD(positions))}
+            </StyledListValue>
+            <StyledListValueB positive={calculateTotalValue(positions) > 0}>
+              {currencyFormat(calculateTotalValue(positions))}
+            </StyledListValueB>
+          </StyledChanges>
         </StyledHoldingDetails>
       </StyledSection>
     </>
@@ -77,9 +83,23 @@ const StyledHoldings = styled.div`
 `;
 
 const StyledHoldingDetails = styled.div`
-  margin: 24px 8px 8px ;
+  margin: 24px 8px 8px;
   list-style: none;
   display: flex;
   justify-content: space-between;
   text-align: left;
 `;
+
+const StyledChanges = styled.ul`
+  text-align: right;
+  `;
+
+const StyledListValue = styled.li`
+color: ${(props) => (props.positive ? "grün" : "red")};
+
+`; 
+const StyledListValueB = styled.li`
+color: ${(props) => (props.positive ? "grün" : "red")};
+
+`; 
+  
