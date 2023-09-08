@@ -42,7 +42,7 @@ const StyledTable = styled.table`
   margin: 40px auto;
   width: 90%;
   border-collapse: collapse;
-  box-shadow: 0 0 20px 8px #f4f4f4;
+  box-shadow: 0 0 8px 4px #f4f4f4;
   color: #f4f4f4;
   overflow: hidden;
   border-radius: 20px;

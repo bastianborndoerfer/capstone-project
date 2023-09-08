@@ -30,6 +30,9 @@ export default createGlobalStyle`
     text-align: center;
     background-color: #26272b;
     color: #f4f4f4;
+    @media only screen and (min-width: 415px) {
+      width: 414px;
+    }
     
     
     

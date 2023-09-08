@@ -30,6 +30,7 @@ const StyledLogo = styled.span`
 display: flex;
 flex-direction: column;
 align-items: center;
+padding-top: 24px;
 `;
 
 
