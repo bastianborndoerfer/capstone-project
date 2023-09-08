@@ -93,30 +93,29 @@ const StyledList = styled.ul`
   margin: 32px auto;
   font-size: small;
   width: 95%;
-  background: #f2f2f2;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 0 20px 8px #d0d0d0;
-`;
+  box-shadow: 0 0 4px 2px #f4f4f4;
+  `;
 
 const StyledListHeader = styled.li`
   display: flex;
   justify-content: space-around;
   border-bottom: 1px black solid;
+  margin: 8px 0 8px 0;
 `;
 
 const StyledListItem = styled.li`
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   border-bottom: 1px black solid;
 `;
 
 const StyledCoinInfo = styled.div`
   padding: 8px;
   border-radius: 12px;
-
   display: flex;
   flex-direction: column;
   align-items: center;

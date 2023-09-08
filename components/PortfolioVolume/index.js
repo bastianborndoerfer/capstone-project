@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import currencyFormat from "@/src/utils";
 
 export default function PortfolioValue({ positions }) {
   //My Holdings - aktueller Wert
@@ -32,34 +33,53 @@ export default function PortfolioValue({ positions }) {
   }
 
   return (
-    <StyledSection>
-      <h3>My Holdings</h3>
-      <p>
-        <strong>
-          <u>{currentPortfolioValue(positions).toFixed(2)} $</u>
-        </strong>
-      </p>
-      <ul>
-        <li>24H change: {calculateTotalChangeUSD(positions).toFixed(2)}$</li>
-        <li>Total P/L: {calculateTotalValue(positions).toFixed(2)}$</li>
-      </ul>
-    </StyledSection>
+    <>
+      <StyledSection>
+        <StyledHoldings>
+          <p>My Holdings</p>
+          <p><u>{currencyFormat(currentPortfolioValue(positions))}</u></p>
+        </StyledHoldings>
+        <StyledHoldingDetails>
+          <ul>
+            <li>24H change:</li>
+            <li>Total P/L:</li>
+          </ul>
+          <ul>
+            <li>{currencyFormat(calculateTotalChangeUSD(positions))}</li>
+            <li>{currencyFormat(calculateTotalValue(positions))}</li>
+          </ul>
+        </StyledHoldingDetails>
+      </StyledSection>
+    </>
   );
 }
 
 const StyledSection = styled.section`
+  padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   width: 75%;
   margin: auto;
-  background: #f2f2f2;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 0 20px 8px #d0d0d0;
-  
+  box-shadow: 0 0 4px 2px #f4f4f4;
 `;
 
+const StyledHoldings = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: left;
+  margin: 8px;
+  gap: 1rem;
+`;
 
+const StyledHoldingDetails = styled.div`
+  margin: 24px 8px 8px ;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+`;

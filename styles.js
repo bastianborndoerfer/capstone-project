@@ -50,18 +50,18 @@ export default createGlobalStyle`
     margin: 1rem;
   }
 
+  h2 {
+  padding: 20px;
+  height: 80px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
   Image {
     background-color: transparent;
     
   }
+ul {
+  list-style: none;
+}
 
-  /* ul {
-    list-style: none;
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 5px;
-  } */
-
-  
 `;

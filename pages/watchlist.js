@@ -28,7 +28,7 @@ export default function Watchlist({
 
   return (
     <>
-      <StyledHeader>My Watchlist</StyledHeader>
+      <h2>My Watchlist</h2>
       <StyledHeading>
           <p>Coin</p>
           <p>Price</p>
@@ -82,12 +82,6 @@ export default function Watchlist({
     </>
   );
 }
-const StyledHeader = styled.h2`
-  padding: 20px;
-  height: 80px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-
 const StyledList = styled.ul`
   padding: 0;
   padding-bottom: 48px;
