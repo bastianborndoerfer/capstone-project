@@ -80,9 +80,6 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
         <p>
           {name}({symbol.toUpperCase()})
         </p>
-        {/* <p>{price.hidden}</p>
-        <p>{change.hidden}</p>
-        <p>{changeusd.hidden}</p> */}
         <StyledLabel>
           Price per coin:
           <StyledInput
@@ -137,12 +134,12 @@ const Wrapper = styled.div`
   justify-content: center;
   padding: 20px;
   margin-top: 10px;
-  box-shadow: 0 0 20px 8px #d0d0d0;
+  box-shadow: 0 0 20px 8px #f4f4f4;
   margin: 0 auto;
-  background: #f2f2f2;
+  //background: #f2f2f2;
   overflow: hidden;
   border-radius: 20px;
-  color: #26272b;
+  //color: #26272b;
 
 `;
 
@@ -150,13 +147,14 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 16px;
 `;
 
 const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin: 16px;
 `;
 
 const StyledInput = styled.input`

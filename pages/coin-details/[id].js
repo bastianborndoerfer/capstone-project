@@ -3,6 +3,7 @@ import CoinDetails from "@/components/CoinDetails";
 import CoinHeader from "@/components/CoinHeader";
 import Chart from "@/components/ChartView";
 import styled from "styled-components";
+import currencyFormat from "@/src/utils";
 
 export default function ShowCoinDetails({ coinsData, onToggleFavorite }) {
   const router = useRouter();
@@ -38,11 +39,11 @@ export default function ShowCoinDetails({ coinsData, onToggleFavorite }) {
       </StyledChart>
       <CoinDetails
         mcrank={selectedCoin.market_cap_rank}
-        mc={selectedCoin.market_cap}
-        dailyhigh={selectedCoin.high_24h}
-        dailylow={selectedCoin.low_24h}
-        ath={selectedCoin.ath}
-        athchange={selectedCoin.ath_change_percentage}
+        mc={currencyFormat(selectedCoin.market_cap)}
+        dailyhigh={currencyFormat(selectedCoin.high_24h)}
+        dailylow={currencyFormat(selectedCoin.low_24h)}
+        ath={currencyFormat(selectedCoin.ath)}
+        athchange={selectedCoin.ath_change_percentage.toFixed(2)}
       />
     </>
   );

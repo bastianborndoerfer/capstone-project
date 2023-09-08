@@ -32,7 +32,7 @@ export default function CoinDetails({
       </tr>
       <tr>
         <StyledTd>All Time High Change:</StyledTd>
-        <StyledTd alignRight>{athchange}</StyledTd>
+        <StyledTd alignRight>{athchange}%</StyledTd>
       </tr>
     </StyledTable>
   );
@@ -42,14 +42,11 @@ const StyledTable = styled.table`
   margin: 40px auto;
   width: 90%;
   border-collapse: collapse;
-  box-shadow: 0 0 20px 8px #d0d0d0;
-  color: #656c6a;
-  
-  background: #f2f2f2;
+  box-shadow: 0 0 20px 8px #f4f4f4;
+  color: #f4f4f4;
   overflow: hidden;
   border-radius: 20px;
   cursor: pointer;
-  
 `;
 
 const StyledTd = styled.td`
