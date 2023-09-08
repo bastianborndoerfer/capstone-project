@@ -117,12 +117,12 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
           Date:
           <StyledInput type="date" name="date" required />
         </StyledLabel>
-        <div>
-          <StyledButton type="button" onClick={handleCancel}>
+        <StyledButtons>
+          <StyledCancelButton type="button" onClick={handleCancel}>
             Cancel
-          </StyledButton>
-          <StyledButton type="submit">Submit</StyledButton>
-        </div>
+          </StyledCancelButton>
+          <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+        </StyledButtons>
       </StyledForm>
     </Wrapper>
   );
@@ -163,6 +163,24 @@ const StyledInput = styled.input`
   margin-top: 4px;
 `;
 
-const StyledButton = styled.button`
-  margin-top: 10px;
+const StyledSubmitButton = styled.button`
+padding: 4px;
+background-color: #36ce5a;
+border: none;
+border-radius: 8px;
+color: #f4f4f4;
+`;
+const StyledCancelButton = styled.button`
+padding: 4px;
+background-color: transparent;
+border: solid #f4f4f4 1px;
+border-radius: 8px;
+color: #f4f4f4;
+`;
+
+
+const StyledButtons = styled.div`
+display: flex;
+gap: 2.5rem;
+margin-top: 8px;
 `;
