@@ -47,7 +47,7 @@ export default function Watchlist({
               price={currencyFormat(coin.current_price)}
               id={coin.id}
               name={coin.name}
-              change={coin.price_change_percentage_24h.toFixed(1)}
+              change={coin.price_change_percentage_24h.toFixed(2)}
               onToggleFavorite={() => onToggleFavorite(coin.id)}
               isFavorite={
                 coinsData?.find((coinInfo) => coinInfo.id === coin.id)
@@ -92,12 +92,15 @@ const StyledListItem = styled.li`
 
 const StyledButton = styled.button`
   position: absolute;
-  left: 12px;
+  left: 24px;
   top: 16px;
   z-index: 33;
-  border: none;
+  font-size: x-large;
+  font-weight: 500;
   background-color: transparent;
-  font-size: large;
+  border: none;
+  color: #f4f4f4;
+  cursor: pointer;
 `;
 
 const EmptyState = styled.div`
@@ -105,7 +108,6 @@ const EmptyState = styled.div`
   justify-content: center;
   align-items: center;
   height: 50vh;
-  text-align: center;
-  font-size: 18px;
+  font-size: 1.5rem;
   color: gray;
 `;
