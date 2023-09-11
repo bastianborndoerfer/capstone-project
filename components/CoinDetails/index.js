@@ -51,6 +51,6 @@ const StyledTable = styled.table`
 
 const StyledTd = styled.td`
   padding: 16px;
-  text-align: ${(props) => (props.alignRight ? "right" : "left")};
+  text-align: ${(props) => (props.$alignRight ? "right" : "left")};
   border-bottom: 1px solid #656c6a;
 `;

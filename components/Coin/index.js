@@ -86,7 +86,6 @@ const StyledPercent = styled.span`
   text-align: center;
   width: 60px;
 `;
-//seh ich keine Veränderung?!
 const StyledParagraph = styled.p`
   max-width: 80px;
   text-align: center;

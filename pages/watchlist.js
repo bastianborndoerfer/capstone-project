@@ -121,7 +121,7 @@ const EmptyState = styled.div`
 
 const StyledHeading = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #26272b;
   box-shadow: 0px 0px 12px #18191b;

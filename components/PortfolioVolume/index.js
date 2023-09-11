@@ -36,16 +36,16 @@ export default function PortfolioValue({ positions }) {
     <>
       <StyledSection>
         <StyledHoldings>
-          <p>My Holdings</p>
+          <h6>My Portfolio</h6>
           <p>
-            <u>{currencyFormat(currentPortfolioValue(positions))}</u>
+            {currencyFormat(currentPortfolioValue(positions))}
           </p>
         </StyledHoldings>
         <StyledHoldingDetails>
-          <ul>
+          <StyledList>
             <li>24H change:</li>
             <li>Total P/L:</li>
-          </ul>
+          </StyledList>
           <StyledChanges>
             <StyledListValue $positive={calculateTotalChangeUSD(positions) > 0}>
               {currencyFormat(calculateTotalChangeUSD(positions))}
@@ -61,16 +61,17 @@ export default function PortfolioValue({ positions }) {
 }
 
 const StyledSection = styled.section`
-  padding: 8px;
+  padding: 8px 8px 0 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 75%;
+  width: 90%;
   margin: auto;
   overflow: hidden;
   border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 0 4px 2px #f4f4f4;
+  box-shadow: 0 0 8px 4px #525252;
+  font-size: 1.5rem;
+  background-color: #383838;
 `;
 
 const StyledHoldings = styled.div`
@@ -78,28 +79,29 @@ const StyledHoldings = styled.div`
   flex-direction: column;
   text-align: left;
   align-items: left;
-  margin: 8px;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 const StyledHoldingDetails = styled.div`
-  margin: 24px 8px 8px;
-  list-style: none;
   display: flex;
   justify-content: space-between;
+  border-radius: 8px;
+  margin: 1rem 0.2rem;
+  padding: 1rem 0.3rem;
+  font-size: 1rem;
+`;
+
+const StyledList = styled.ul`
   text-align: left;
 `;
 
 const StyledChanges = styled.ul`
   text-align: right;
-  `;
+`;
 
 const StyledListValue = styled.li`
-color: ${(props) => (props.positive ? "green" : "red")};
-
-`; 
+  color: ${(props) => (props.$positive ? "green" : "#ff4747")};
+`;
 const StyledListValueB = styled.li`
-color: ${(props) => (props.positive ? "green" : "red")};
-
-`; 
-  
+  color: ${(props) => (props.$positive ? "green" : "#ff4747")};
+`;

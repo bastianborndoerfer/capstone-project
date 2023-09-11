@@ -56,7 +56,7 @@ export default function Holdings({ positions, onDeletePosition }) {
           </StyledCoinInfo>
           <ButtonContainer>
             <StyledDeleteButton onClick={() => showButton(position)}>
-              Delete
+              <Image src={"/delete.svg"} width={15} height={15} alt="delete button"/>
             </StyledDeleteButton>
             <StyledDialog id={`deleteDialog-${position.id}`}>
               <StyledDialogWarning>
@@ -72,7 +72,7 @@ export default function Holdings({ positions, onDeletePosition }) {
               </form>
             </StyledDialog>
             <StyledInfoButton onClick={() => toggleDetails(position.id)}>
-              Info
+              <Image src={"/info.svg"} width={15} height={15} alt="info button" />
             </StyledInfoButton>
           </ButtonContainer>
           {showDetails === position.id && (
@@ -93,20 +93,19 @@ export default function Holdings({ positions, onDeletePosition }) {
 }
 
 const StyledList = styled.ul`
-  padding: 0;
-  margin: 32px auto;
-  font-size: small;
-  width: 95%;
+  margin: 8px auto;
   overflow: hidden;
-  border-radius: 4px;
-  box-shadow: 0 0 4px 2px #f4f4f4;
 `;
 
 const StyledListHeader = styled.li`
   display: flex;
-  justify-content: space-around;
-  border-bottom: 1px black solid;
-  margin: 8px 0 8px 0;
+  justify-content: space-between;
+  background-color: #26272b;
+  box-shadow: 0px 0px 12px #18191b;
+  border-radius: 8px;
+  margin: 2rem 1rem;
+  padding: 0.7rem 0.5rem;
+  font-size: 0.75rem;
 `;
 
 const StyledH4 = styled.h4`
@@ -114,12 +113,14 @@ const StyledH4 = styled.h4`
 `;
 
 const StyledListItem = styled.li`
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto auto auto;
-  border-bottom: 1px black solid;
-  margin-top: 20px;
+  align-items: center;
+  justify-items: center;
+  background-color: #26272b;
+  box-shadow: 0px 0px 12px #18191b;
+  border-radius: 8px;
+  margin: 2rem 1rem;
+  padding: 0.7rem 0.5rem;
+  font-size: 0.75rem;
 `;
 
 const StyledCoinInfo = styled.div`
@@ -129,6 +130,7 @@ const StyledCoinInfo = styled.div`
   gap: 1.72em;
   grid-row: 1 / 3;
   grid-column: 1;
+  margin-top: 8px;
 `;
 
 const ButtonContainer = styled.div`

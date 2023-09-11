@@ -152,12 +152,11 @@ const Wrapper = styled.div`
   justify-content: center;
   padding: 20px;
   margin-top: 10px;
-  box-shadow: 0 0 20px 8px #f4f4f4;
+  box-shadow: 0 0 8px 4px #f4f4f4;
   margin: 0 auto;
-  //background: #f2f2f2;
   overflow: hidden;
   border-radius: 20px;
-  //color: #26272b;
+  
 `;
 
 const StyledForm = styled.form`

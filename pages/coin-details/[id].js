@@ -59,7 +59,7 @@ align-items: center;
 `;
 
 const StyledPercent = styled.span`
-  color: ${(props) => (props.isNegative ? "red" : "green")};
+  color: ${(props) => (props.$isNegative ? "red" : "green")};
   font-size: medium;
 `;
 
