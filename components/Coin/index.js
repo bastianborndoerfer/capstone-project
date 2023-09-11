@@ -24,7 +24,7 @@ export default function Coin({
         </StyledRank>
         <StyledCoin>
           <Image src={image} alt={name} height={25} width={25} />
-          <p>{symbol}</p>
+          <StyledParagraph>{symbol}</StyledParagraph>
         </StyledCoin>
         <StyledPercent isNegative={change < 0}>
           <p>{change} %</p>
@@ -43,14 +43,19 @@ export default function Coin({
 }
 
 const StyledLink = styled(Link)`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(20px, auto) 2fr 60px 2fr 1fr 1fr minmax(
+      10px,
+      auto
+    );
+
   align-items: center;
+  justify-items: center;
   background-color: #26272b;
   box-shadow: 0px 0px 12px #18191b;
   border-radius: 8px;
   margin: 2rem 1rem;
-  padding: 0.7rem .5rem;
+  padding: 0.7rem 0.5rem;
   font-size: 0.75rem;
 `;
 const Wrapper = styled.div`
@@ -78,4 +83,14 @@ const StyledPercent = styled.span`
   padding: 4px;
   font-size: 0.55rem;
   border-radius: 12px;
-  `;
+  text-align: center;
+  width: 60px;
+`;
+//seh ich keine Veränderung?!
+const StyledParagraph = styled.p`
+  max-width: 80px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
