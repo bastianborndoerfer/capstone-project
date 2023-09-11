@@ -52,11 +52,19 @@ export default function Holdings({ positions, onDeletePosition }) {
             </StyledImageContainer>
             <p>{currencyFormat(position.currentprice)}</p>
             <p>{position.change24H.toFixed(1)}%</p>
-            <p>$ {getCurrentPositionValue(position).toFixed(2)}</p>
+            <StyledPositionValue>
+              {currencyFormat(getCurrentPositionValue(position))}{" "}
+              {position.quantity} {position.symbol.toUpperCase()}
+            </StyledPositionValue>
           </StyledCoinInfo>
           <ButtonContainer>
             <StyledDeleteButton onClick={() => showButton(position)}>
-              <Image src={"/delete.svg"} width={15} height={15} alt="delete button"/>
+              <Image
+                src={"/delete.svg"}
+                width={15}
+                height={15}
+                alt="delete button"
+              />
             </StyledDeleteButton>
             <StyledDialog id={`deleteDialog-${position.id}`}>
               <StyledDialogWarning>
@@ -72,7 +80,12 @@ export default function Holdings({ positions, onDeletePosition }) {
               </form>
             </StyledDialog>
             <StyledInfoButton onClick={() => toggleDetails(position.id)}>
-              <Image src={"/info.svg"} width={15} height={15} alt="info button" />
+              <Image
+                src={"/info.svg"}
+                width={15}
+                height={15}
+                alt="info button"
+              />
             </StyledInfoButton>
           </ButtonContainer>
           {showDetails === position.id && (
@@ -145,12 +158,15 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledDetails = styled.div`
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-items: center;
   grid-row: 4;
   grid-column: 1;
+  box-shadow: 0px 0px 12px #18191b;
+  gap: 0.25rem;
 `;
 
 const StyledDialog = styled.dialog`
@@ -199,6 +215,11 @@ const StyledImageContainer = styled.div`
   align-items: center;
   margin-left: 8%;
   margin-top: -24%;
+`;
+
+const StyledPositionValue = styled.p`
+  font-weight: bold;
+  text-align: right;
 `;
 
 const StyledDeleteButton = styled.button`
