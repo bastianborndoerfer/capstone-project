@@ -30,58 +30,62 @@ export default function Watchlist({
     <>
       <h2>My Watchlist</h2>
       <StyledHeading>
-          <p>Coin</p>
-          <p>Price</p>
-          <p>24h</p>
-          <p>WL</p>
-        </StyledHeading>
+        <p>Coin</p>
+        <p>Price</p>
+        <p>24h</p>
+        <p>WL</p>
+      </StyledHeading>
       {likedCoins.length === 0 ? (
         <EmptyState>The watchlist is empty!</EmptyState>
       ) : (
         <StyledList>
           {likedCoins?.map((coin) => (
             <StyledListItem key={coin.id}>
-            <StyledButton
-              type="button"
-              onClick={() => toggleItemExpansion(coin.id)}
-            >
-              {expandedItems[coin.id] ? "-" : "+"}
-            </StyledButton>
+              <StyledButton
+                type="button"
+                onClick={() => toggleItemExpansion(coin.id)}
+              >
+                {expandedItems[coin.id] ? "-" : "+"}
+              </StyledButton>
 
-            <CoinWatchlist
-              image={coin.image}
-              symbol={coin.symbol.toUpperCase()}
-              price={currencyFormat(coin.current_price)}
-              id={coin.id}
-              name={coin.name}
-              change={coin.price_change_percentage_24h.toFixed(2)}
-              changeusd={currencyFormat(coin.price_change_24h)}
-              onToggleFavorite={() => onToggleFavorite(coin.id)}
-              isFavorite={
-                coinsData?.find((coinInfo) => coinInfo.id === coin.id)
-                  ?.isFavorite
-              }
-            />
-            {expandedItems[coin.id] && (
-              <Form
-                positions={positions}
-                onAddPosition={onAddPosition}
+              <CoinWatchlist
                 image={coin.image}
+                symbol={coin.symbol.toUpperCase()}
+                price={currencyFormat(coin.current_price)}
+                id={coin.id}
                 name={coin.name}
-                symbol={coin.symbol}
-                price={coin.current_price}
-                change={coin.price_change_percentage_24h}
-                changeusd={coin.price_change_24h}
+                change={coin.price_change_percentage_24h.toFixed(2)}
+                changeusd={currencyFormat(coin.price_change_24h)}
+                onToggleFavorite={() => onToggleFavorite(coin.id)}
+                isFavorite={
+                  coinsData?.find((coinInfo) => coinInfo.id === coin.id)
+                    ?.isFavorite
+                }
               />
-            )}
-          </StyledListItem>
-        ))}
-      </StyledList>
+              {expandedItems[coin.id] && (
+                <Form
+                  positions={positions}
+                  onAddPosition={onAddPosition}
+                  image={coin.image}
+                  name={coin.name}
+                  symbol={coin.symbol}
+                  price={coin.current_price}
+                  change={coin.price_change_percentage_24h}
+                  changeusd={coin.price_change_24h}
+                  onCancel={() => toggleItemExpansion(coin.id)}
+                />
+              )}
+            </StyledListItem>
+          ))}
+        </StyledList>
       )}
       <NavBar />
     </>
   );
 }
+
+//onCancel() hinzugefügt
+
 const StyledList = styled.ul`
   padding: 0;
   padding-bottom: 48px;
@@ -125,5 +129,5 @@ const StyledHeading = styled.div`
   margin: 2rem 1rem;
   padding: 0.7rem 1rem;
   font-weight: 500;
-  font-size: 0.75rem
+  font-size: 0.75rem;
 `;

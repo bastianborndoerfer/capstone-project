@@ -4,7 +4,16 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 import { uid } from "uid";
 
-export default function Form({ onAddPosition, image, price, symbol, name, change, changeusd }) {
+export default function Form({
+  onAddPosition,
+  image,
+  price,
+  symbol,
+  name,
+  change,
+  changeusd,
+  onCancel,
+}) {
   const [position, setPosition] = useState({
     id: "",
     price: "",
@@ -33,6 +42,19 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
     }));
   }
 
+  function handleCancel(event) {
+    event.preventDefault();
+    console.log("button geklickt");
+    setPosition({
+      id: "",
+      price: "",
+      quantity: "",
+      total: "",
+      date: "",
+    });
+    if (onCancel) onCancel();
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -56,22 +78,18 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
     };
     onAddPosition(newPosition);
     event.target.reset();
-  }
 
-  function handleCancel() {
-    setPosition({
-      id: "",
-      price: "",
-      quantity: "",
-      total: "",
-      date: "",
-    });
+    if (onCancel) onCancel();
   }
 
   const formRef = useRef(null);
   useEffect(() => {
-    formRef.current.scrollIntoView({behavior: "smooth"}); }, []);
-  
+    formRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  // habe um sämtliche label/input dinger ein div gesetzt, damit das input nicht mehr im label liegt. da hat es
+  // nämlich nichts zu suchen ^^
+
   return (
     <Wrapper>
       <h3>Add Transaction:</h3>
@@ -80,8 +98,8 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
         <p>
           {name}({symbol.toUpperCase()})
         </p>
-        <StyledLabel>
-          Price per coin:
+        <StyledContainer>
+          <label>Price per coin:</label>
           <StyledInput
             type="number"
             name="price"
@@ -89,10 +107,10 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
             onChange={handleChange}
             required
           />
-        </StyledLabel>
+        </StyledContainer>
 
-        <StyledLabel>
-          Quantity:
+        <StyledContainer>
+          <label>Quantity:</label>
           <StyledInput
             type="number"
             name="quantity"
@@ -100,10 +118,10 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
             onChange={handleChange}
             required
           />
-        </StyledLabel>
+        </StyledContainer>
 
-        <StyledLabel>
-          Total output:
+        <StyledContainer>
+          <label>Total output:</label>
           <StyledInput
             type="number"
             name="total"
@@ -111,12 +129,12 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
             onChange={updateTotal}
             readOnly
           />
-        </StyledLabel>
+        </StyledContainer>
 
-        <StyledLabel>
-          Date:
+        <StyledContainer>
+          <label>Date:</label>
           <StyledInput type="date" name="date" required />
-        </StyledLabel>
+        </StyledContainer>
         <StyledButtons>
           <StyledCancelButton type="button" onClick={handleCancel}>
             Cancel
@@ -129,7 +147,7 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
 }
 
 const Wrapper = styled.div`
- width: 250px;
+  width: 250px;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -140,20 +158,12 @@ const Wrapper = styled.div`
   overflow: hidden;
   border-radius: 20px;
   //color: #26272b;
-
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 16px;
-`;
-
-const StyledLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   margin: 16px;
 `;
 
@@ -164,23 +174,29 @@ const StyledInput = styled.input`
 `;
 
 const StyledSubmitButton = styled.button`
-padding: 4px;
-background-color: #36ce5a;
-border: none;
-border-radius: 8px;
-color: #f4f4f4;
+  padding: 4px;
+  background-color: #36ce5a;
+  border: none;
+  border-radius: 8px;
+  color: #f4f4f4;
 `;
 const StyledCancelButton = styled.button`
-padding: 4px;
-background-color: transparent;
-border: solid #f4f4f4 1px;
-border-radius: 8px;
-color: #f4f4f4;
+  padding: 4px;
+  background-color: transparent;
+  border: solid #f4f4f4 1px;
+  border-radius: 8px;
+  color: #f4f4f4;
 `;
 
-
 const StyledButtons = styled.div`
-display: flex;
-gap: 2.5rem;
-margin-top: 8px;
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 8px;
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px;
 `;
