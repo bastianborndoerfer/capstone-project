@@ -22,7 +22,7 @@ export default function CoinHeader({
       <p>({symbol})</p>
       <StyledLikeButton>
         <LikeButton
-          $isFavorite={isFavorite}
+          isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
         />
       </StyledLikeButton>

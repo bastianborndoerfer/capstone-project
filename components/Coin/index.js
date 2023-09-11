@@ -34,7 +34,7 @@ export default function Coin({
         <p>{changeusd}</p>
       </StyledLink>
       <LikeButton
-        $isFavorite={isFavorite}
+        isFavorite={isFavorite}
         onToggleFavorite={onToggleFavorite}
         id={id}
       />
@@ -79,7 +79,7 @@ const StyledPrices = styled.span`
 `;
 
 const StyledPercent = styled.span`
-  background-color: ${(props) => (props.isNegative ? "red" : "green")};
+  background-color: ${(props) => (props.$isNegative ? "red" : "green")};
   padding: 4px;
   font-size: 0.55rem;
   border-radius: 12px;
