@@ -4,12 +4,22 @@ import styled from "styled-components";
 export default function Header({ handleSearch }) {
   return (
     <StyledHeader>
-      <Image src="/logo.svg" height={50} width={50} alt="A Logo Placeholder" />
-      <h2>KryptoScout</h2>
+      <StyledLogo>
+        <StyledImageContainer>
+          <Image
+            src="/logo.svg"
+            height={30}
+            width={30}
+            alt="A Logo Placeholder"
+          />
+        </StyledImageContainer>
+        <StyledH2>KryptoScout</StyledH2>
+      </StyledLogo>
       <StyledInput
         type="text"
         placeholder="Search for a coin ..."
         onChange={handleSearch}
+        maxLength={30}
       />
     </StyledHeader>
   );
@@ -17,22 +27,29 @@ export default function Header({ handleSearch }) {
 
 const StyledHeader = styled.header`
   display: flex;
-  
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
-  height: 54px;
-  background-color: #039a9a;
-  color: #1c274c;
-  position: fixed;
-  z-index: 50;
-  top: 0;
-  right: 0;
-  left: 0;
+  padding: 24px 24px 24px 12px;
+  margin-top: 30px;
+  height: 32px;
+`;
+
+const StyledLogo = styled.span`
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledInput = styled.input`
-  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  width: 10em;
+`;
+
+const StyledH2 = styled.h2`
+  margin: 0;
+  margin-top: -15px;
+`;
+
+const StyledImageContainer = styled.div`
+  margin-top: 10px;
 `;

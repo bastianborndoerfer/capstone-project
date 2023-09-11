@@ -9,34 +9,48 @@ export default function CoinDetails({
   athchange,
 }) {
   return (
-    <Wrapper>
-      <StyledList>
-        <StyledListItem>Market Cap Rank: {mcrank}</StyledListItem>
-        <StyledListItem>Market Cap:{mc}</StyledListItem>
-        <StyledListItem>24H High: {dailyhigh}</StyledListItem>
-        <StyledListItem>24H Low: {dailylow}</StyledListItem>
-        <StyledListItem>All Time High: {ath}</StyledListItem>
-        <StyledListItem>All Time High Change: {athchange}</StyledListItem>
-      </StyledList>
-    </Wrapper>
+    <StyledTable>
+      <tr>
+        <StyledTd>Market Cap Rank:</StyledTd>
+        <StyledTd $alignRight>#{mcrank}</StyledTd>
+      </tr>
+      <tr>
+        <StyledTd>Market Cap:</StyledTd>
+        <StyledTd $alignRight>{mc}</StyledTd>
+      </tr>
+      <tr>
+        <StyledTd>24H High:</StyledTd>
+        <StyledTd $alignRight>{dailyhigh}</StyledTd>
+      </tr>
+      <tr>
+        <StyledTd>24H Low:</StyledTd>
+        <StyledTd $alignRight>{dailylow}</StyledTd>
+      </tr>
+      <tr>
+        <StyledTd>All Time High:</StyledTd>
+        <StyledTd $alignRight>{ath}</StyledTd>
+      </tr>
+      <tr>
+        <StyledTd>All Time High Change:</StyledTd>
+        <StyledTd $alignRight>{athchange}%</StyledTd>
+      </tr>
+    </StyledTable>
   );
 }
 
-const Wrapper = styled.div`
-  display: inline-block;
-  border: solid;
-  border-radius: 15px;
-  text-align: justify;
+const StyledTable = styled.table`
+  margin: 40px auto;
+  width: 90%;
+  border-collapse: collapse;
+  box-shadow: 0 0 8px 4px #f4f4f4;
+  color: #f4f4f4;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
 `;
 
-const StyledList = styled.ul`
-  list-style: none;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const StyledListItem = styled.li`
-  border-bottom: solid;
+const StyledTd = styled.td`
+  padding: 16px;
+  text-align: ${(props) => (props.$alignRight ? "right" : "left")};
+  border-bottom: 1px solid #656c6a;
 `;

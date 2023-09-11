@@ -11,33 +11,36 @@ export default function NavBar() {
         <Link href={"/"}>
           <StyledImage
             src="/market.svg"
-            height={40}
-            width={40}
+            height={25}
+            width={25}
             alt="chart icon"
-            isActive={router.pathname === "/"}
+            isactive={router.pathname === "/" ? "true" : "false"}
           />
+          <p>Market</p>
         </Link>
       </StyledLi>
       <StyledLi>
         <Link href={"./watchlist"}>
           <StyledImage
             src="/favoriteButton_aktiv.svg"
-            height={40}
-            width={40}
+            height={25}
+            width={25}
             alt="a star icon"
-            isActive={router.pathname === "/watchlist"}
+            isactive={router.pathname === "/watchlist" ? "true" : "false"}
           />
+          <p>Watchlist</p>
         </Link>
       </StyledLi>
       <StyledLi>
         <Link href={"./portfolio"}>
           <StyledImage
             src="/portfolio.svg"
-            height={40}
-            width={40}
+            height={25}
+            width={25}
             alt="portfolio icon"
-            isActive={router.pathname === "/portfolio"}
+            isactive={router.pathname === "/portfolio" ? "true" : "false"}
           />
+          <p>Portfolio</p>
         </Link>
       </StyledLi>
     </StyledUl>
@@ -46,17 +49,19 @@ export default function NavBar() {
 
 const StyledUl = styled.ul`
   position: fixed;
-  width: 420px;
+  width: 100%;
   bottom: 0;
-  z-index: 1;
-  height: 60px;
+  z-index: 100;
+  height: 68px;
   margin: 0;
   padding: 8px;
   display: flex;
   justify-content: space-around;
   list-style: none;
-  box-shadow: 1px 1px 10px grey;
-  background-color: #d9d9d9;  
+  background-color: #1d2022;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  font-size: small;
 `;
 
 const StyledLi = styled.li`
@@ -66,9 +71,10 @@ const StyledLi = styled.li`
 `;
 
 const StyledImage = styled(Image)`
-  ${({ isActive }) =>
-    isActive &&
+  ${({ isactive }) =>
+    isactive === "true" &&
     css`
       transform: scale(1.4);
     `}
+  border: #f4f4f4;
 `;

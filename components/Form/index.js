@@ -1,9 +1,19 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { uid } from "uid";
 
-export default function Form({ onAddPosition, image, price, symbol, name, change, changeusd }) {
+export default function Form({
+  onAddPosition,
+  image,
+  price,
+  symbol,
+  name,
+  change,
+  changeusd,
+  onCancel,
+}) {
   const [position, setPosition] = useState({
     id: "",
     price: "",
@@ -32,6 +42,19 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
     }));
   }
 
+  function handleCancel(event) {
+    event.preventDefault();
+    console.log("button geklickt");
+    setPosition({
+      id: "",
+      price: "",
+      quantity: "",
+      total: "",
+      date: "",
+    });
+    if (onCancel) onCancel();
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -54,32 +77,29 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
       date: data.date,
     };
     onAddPosition(newPosition);
-    console.log(newPosition.changeusd);
     event.target.reset();
+
+    if (onCancel) onCancel();
   }
 
-  function handleCancel() {
-    setPosition({
-      id: "",
-      price: "",
-      quantity: "",
-      total: "",
-      date: "",
-    });
-  }
+  const formRef = useRef(null);
+  useEffect(() => {
+    formRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  // habe um sämtliche label/input dinger ein div gesetzt, damit das input nicht mehr im label liegt. da hat es
+  // nämlich nichts zu suchen ^^
+
   return (
     <Wrapper>
       <h3>Add Transaction:</h3>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm ref={formRef} onSubmit={handleSubmit}>
         <Image src={image} alt={name} height={25} width={25} />
         <p>
           {name}({symbol.toUpperCase()})
         </p>
-        <p>{price.hidden}</p>
-        <p>{change.hidden}</p>
-        <p>{changeusd.hidden}</p>
-        <StyledLabel>
-          Price per coin:
+        <StyledContainer>
+          <label>Price per coin:</label>
           <StyledInput
             type="number"
             name="price"
@@ -87,10 +107,10 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
             onChange={handleChange}
             required
           />
-        </StyledLabel>
+        </StyledContainer>
 
-        <StyledLabel>
-          Quantity:
+        <StyledContainer>
+          <label>Quantity:</label>
           <StyledInput
             type="number"
             name="quantity"
@@ -98,10 +118,10 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
             onChange={handleChange}
             required
           />
-        </StyledLabel>
+        </StyledContainer>
 
-        <StyledLabel>
-          Total output:
+        <StyledContainer>
+          <label>Total output:</label>
           <StyledInput
             type="number"
             name="total"
@@ -109,18 +129,18 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
             onChange={updateTotal}
             readOnly
           />
-        </StyledLabel>
+        </StyledContainer>
 
-        <StyledLabel>
-          Date:
+        <StyledContainer>
+          <label>Date:</label>
           <StyledInput type="date" name="date" required />
-        </StyledLabel>
-        <div>
-          <StyledButton type="button" onClick={handleCancel}>
+        </StyledContainer>
+        <StyledButtons>
+          <StyledCancelButton type="button" onClick={handleCancel}>
             Cancel
-          </StyledButton>
-          <StyledButton type="submit">Submit</StyledButton>
-        </div>
+          </StyledCancelButton>
+          <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+        </StyledButtons>
       </StyledForm>
     </Wrapper>
   );
@@ -128,28 +148,22 @@ export default function Form({ onAddPosition, image, price, symbol, name, change
 
 const Wrapper = styled.div`
   width: 250px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: lightgray;
   margin-top: 10px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  box-shadow: 0 0 8px 4px #f4f4f4;
   margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  
 `;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const StyledLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 10px;
+  margin: 16px;
 `;
 
 const StyledInput = styled.input`
@@ -158,6 +172,30 @@ const StyledInput = styled.input`
   margin-top: 4px;
 `;
 
-const StyledButton = styled.button`
-  margin-top: 10px;
+const StyledSubmitButton = styled.button`
+  padding: 4px;
+  background-color: #36ce5a;
+  border: none;
+  border-radius: 8px;
+  color: #f4f4f4;
+`;
+const StyledCancelButton = styled.button`
+  padding: 4px;
+  background-color: transparent;
+  border: solid #f4f4f4 1px;
+  border-radius: 8px;
+  color: #f4f4f4;
+`;
+
+const StyledButtons = styled.div`
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 8px;
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px;
 `;
