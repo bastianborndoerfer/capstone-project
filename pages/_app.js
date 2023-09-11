@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }) {
   // add position to portfolio
   function handleAddPosition(newPosition) {
     setPositions([...positions, newPosition]);
-    toast.success("Position added!");
+    toast.success("Position added to Portfolio!");
   }
 
   // delete a position
@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }) {
       (position) => position.id !== deletePosition.id
     );
     setPositions(remainingPositions);
-    toast.error("Position deleted!");
+    toast.error("Position deleted from Portfolio!");
   }
 
   return (
