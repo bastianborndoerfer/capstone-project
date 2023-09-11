@@ -12,27 +12,27 @@ export default function CoinDetails({
     <StyledTable>
       <tr>
         <StyledTd>Market Cap Rank:</StyledTd>
-        <StyledTd alignRight>#{mcrank}</StyledTd>
+        <StyledTd $alignRight>#{mcrank}</StyledTd>
       </tr>
       <tr>
         <StyledTd>Market Cap:</StyledTd>
-        <StyledTd alignRight>{mc}</StyledTd>
+        <StyledTd $alignRight>{mc}</StyledTd>
       </tr>
       <tr>
         <StyledTd>24H High:</StyledTd>
-        <StyledTd alignRight>{dailyhigh}</StyledTd>
+        <StyledTd $alignRight>{dailyhigh}</StyledTd>
       </tr>
       <tr>
         <StyledTd>24H Low:</StyledTd>
-        <StyledTd alignRight>{dailylow}</StyledTd>
+        <StyledTd $alignRight>{dailylow}</StyledTd>
       </tr>
       <tr>
         <StyledTd>All Time High:</StyledTd>
-        <StyledTd alignRight>{ath}</StyledTd>
+        <StyledTd $alignRight>{ath}</StyledTd>
       </tr>
       <tr>
         <StyledTd>All Time High Change:</StyledTd>
-        <StyledTd alignRight>{athchange}%</StyledTd>
+        <StyledTd $alignRight>{athchange}%</StyledTd>
       </tr>
     </StyledTable>
   );

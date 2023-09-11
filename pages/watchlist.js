@@ -57,7 +57,7 @@ export default function Watchlist({
                 change={coin.price_change_percentage_24h.toFixed(2)}
                 changeusd={currencyFormat(coin.price_change_24h)}
                 onToggleFavorite={() => onToggleFavorite(coin.id)}
-                isFavorite={
+                $isFavorite={
                   coinsData?.find((coinInfo) => coinInfo.id === coin.id)
                     ?.isFavorite
                 }

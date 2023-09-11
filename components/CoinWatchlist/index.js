@@ -22,7 +22,7 @@ export default function CoinWatchlist({
           <p>{symbol}</p>
         </StyledCoin>
         <p>{price}</p>
-        <StyledPercent isNegative={change < 0}>
+        <StyledPercent $isNegative={change < 0}>
           <p>{change} %</p>
         <p>{changeusd}</p>
         </StyledPercent>

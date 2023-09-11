@@ -26,7 +26,7 @@ export default function Coin({
           <Image src={image} alt={name} height={25} width={25} />
           <StyledParagraph>{symbol}</StyledParagraph>
         </StyledCoin>
-        <StyledPercent isNegative={change < 0}>
+        <StyledPercent $isNegative={change < 0}>
           <p>{change} %</p>
         </StyledPercent>
         <p>{price}</p>
@@ -34,7 +34,7 @@ export default function Coin({
         <p>{changeusd}</p>
       </StyledLink>
       <LikeButton
-        isFavorite={isFavorite}
+        $isFavorite={isFavorite}
         onToggleFavorite={onToggleFavorite}
         id={id}
       />

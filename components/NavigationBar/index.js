@@ -14,7 +14,7 @@ export default function NavBar() {
             height={25}
             width={25}
             alt="chart icon"
-            isActive={router.pathname === "/"}
+            isactive={router.pathname === "/" ? "true" : "false"}
           />
           <p>Market</p>
         </Link>
@@ -26,7 +26,7 @@ export default function NavBar() {
             height={25}
             width={25}
             alt="a star icon"
-            isActive={router.pathname === "/watchlist"}
+            isactive={router.pathname === "/watchlist" ? "true" : "false"}
           />
           <p>Watchlist</p>
         </Link>
@@ -38,7 +38,7 @@ export default function NavBar() {
             height={25}
             width={25}
             alt="portfolio icon"
-            isActive={router.pathname === "/portfolio"}
+            isactive={router.pathname === "/portfolio" ? "true" : "false"}
           />
           <p>Portfolio</p>
         </Link>
@@ -71,8 +71,8 @@ const StyledLi = styled.li`
 `;
 
 const StyledImage = styled(Image)`
-  ${({ isActive }) =>
-    isActive &&
+  ${({ isactive }) =>
+    isactive === "true" &&
     css`
       transform: scale(1.4);
     `}

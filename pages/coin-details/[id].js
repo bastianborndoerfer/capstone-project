@@ -30,7 +30,7 @@ export default function ShowCoinDetails({ coinsData, onToggleFavorite }) {
       />
       <StyledPrice>
         <p>${selectedCoin.current_price.toLocaleString()}</p>
-        <StyledPercent isNegative={selectedCoin.price_change_percentage_24h < 0}>
+        <StyledPercent $isNegative={selectedCoin.price_change_percentage_24h < 0}>
           <p>{selectedCoin.price_change_percentage_24h.toFixed(2)}%</p>
         </StyledPercent>
       </StyledPrice>
