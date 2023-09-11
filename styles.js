@@ -1,7 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { Rubik } from "@next/font/google";
-
-const rubik = Rubik({ subsets: ["latin"] });
 
 export default createGlobalStyle`
 
@@ -29,11 +26,7 @@ export default createGlobalStyle`
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     background-color: #26272b;
-    color: #f4f4f4;
-    @media only screen and (min-width: 415px) {
-      width: 414px;
-    }
-    
+    color: #f4f4f4;  
     
     
   }
