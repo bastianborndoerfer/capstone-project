@@ -47,10 +47,10 @@ export default function PortfolioValue({ positions }) {
             <li>Total P/L:</li>
           </ul>
           <StyledChanges>
-            <StyledListValue positive={calculateTotalChangeUSD(positions) > 0}>
+            <StyledListValue $positive={calculateTotalChangeUSD(positions) > 0}>
               {currencyFormat(calculateTotalChangeUSD(positions))}
             </StyledListValue>
-            <StyledListValueB positive={calculateTotalValue(positions) > 0}>
+            <StyledListValueB $positive={calculateTotalValue(positions) > 0}>
               {currencyFormat(calculateTotalValue(positions))}
             </StyledListValueB>
           </StyledChanges>
@@ -95,11 +95,11 @@ const StyledChanges = styled.ul`
   `;
 
 const StyledListValue = styled.li`
-color: ${(props) => (props.positive ? "grün" : "red")};
+color: ${(props) => (props.positive ? "green" : "red")};
 
 `; 
 const StyledListValueB = styled.li`
-color: ${(props) => (props.positive ? "grün" : "red")};
+color: ${(props) => (props.positive ? "green" : "red")};
 
 `; 
   
